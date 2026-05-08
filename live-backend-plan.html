@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RCoP Glasgow Live Backend Plan</title>
+  <style>
+    :root {
+      --green: #24584d;
+      --green-2: #347f6d;
+      --ink: #101828;
+      --muted: #667085;
+      --line: #d8e0e7;
+      --soft: #f3f8f6;
+      --warn: #fff4db;
+      --warn-ink: #9a5b13;
+      --white: #fff;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #eef6f3 0%, #f9fbfb 40%, #ffffff 100%);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    header {
+      background: var(--green);
+      color: white;
+      padding: 28px 20px;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .brand img {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+      flex: 0 0 auto;
+    }
+
+    h1, h2, h3 { line-height: 1.12; margin: 0; letter-spacing: 0; }
+    h1 { font-size: clamp(2rem, 4vw, 4rem); max-width: 820px; }
+    h2 { font-size: clamp(1.7rem, 3vw, 2.8rem); margin-bottom: 14px; }
+    h3 { font-size: 1.35rem; margin-bottom: 8px; }
+    p { margin: 0; color: var(--muted); font-size: 1.04rem; }
+
+    .hero {
+      padding: 48px 0 28px;
+    }
+
+    .hero p {
+      max-width: 820px;
+      color: #d7e7e2;
+      font-size: 1.14rem;
+      margin-top: 14px;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+      padding: 12px 0;
+    }
+
+    .nav .wrap {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    a.button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+      color: var(--green);
+      text-decoration: none;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    a.button.primary {
+      background: var(--green-2);
+      border-color: var(--green-2);
+      color: white;
+    }
+
+    main { padding: 34px 0 70px; }
+
+    section {
+      margin: 0 0 34px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 18px 45px rgba(16, 24, 40, .06);
+    }
+
+    .card strong { color: var(--ink); }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-weight: 800;
+      background: #e8f4f0;
+      color: var(--green);
+      margin-bottom: 18px;
+    }
+
+    .pill.warn {
+      background: var(--warn);
+      color: var(--warn-ink);
+    }
+
+    .list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .item {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+    }
+
+    .item p { margin-top: 4px; }
+
+    .callout {
+      border-left: 6px solid #e45d5d;
+      background: #fff7f7;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    code {
+      background: #eef3f6;
+      border-radius: 6px;
+      padding: 3px 6px;
+      font-size: .95em;
+    }
+
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; }
+      .brand { align-items: flex-start; }
+      .brand img { width: 58px; height: 58px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap hero">
+      <div class="brand">
+        <img src="thousand-small-steps-assets/rcop-glasgow-logo-white-transparent.png" alt="RCoP Glasgow Branch logo">
+        <div>
+          <h1>Live Dashboard Backend</h1>
+          <p>Turning the Glasgow Branch dashboard from a local page into a shared hub for questions, requests, answers and uploaded assets.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav" aria-label="Page navigation">
+    <div class="wrap">
+      <a class="button primary" href="RCOP-live-project-dashboard.html">Dashboard</a>
+      <a class="button" href="#current">Current</a>
+      <a class="button" href="#supabase">Supabase</a>
+      <a class="button" href="#access">Access</a>
+      <a class="button" href="#next">Next Steps</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section id="current">
+      <span class="pill">Current position</span>
+      <div class="grid">
+        <article class="card">
+          <h3>Live link exists</h3>
+          <p>The dashboard is published on GitHub Pages and can be shared now as a working reference.</p>
+        </article>
+        <article class="card">
+          <h3>Forms are local</h3>
+          <p>Questions, answers and requests currently save in the browser using <code>localStorage</code>. That means they are useful on one device, but not yet shared across the committee.</p>
+        </article>
+        <article class="card">
+          <h3>WhatsApp is manual</h3>
+          <p>The dashboard can open WhatsApp with pre-written text, but WhatsApp will not allow a normal webpage to silently post into the group.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="supabase">
+      <span class="pill">Proposed Supabase structure</span>
+      <div class="list">
+        <div class="item">
+          <strong>Action requests</strong>
+          <p>Website updates, email nudges, asset requests, MedTech requests and decisions added from the dashboard.</p>
+        </div>
+        <div class="item">
+          <strong>Open questions and answers</strong>
+          <p>Questions stay visible; committee members can answer them; answers can be copied or shared manually into WhatsApp.</p>
+        </div>
+        <div class="item">
+          <strong>Asset submissions</strong>
+          <p>Back to Basics, POM-S, regular emails and AGM campaign uploads can be logged against the correct area.</p>
+        </div>
+        <div class="item">
+          <strong>Draft SQL prepared</strong>
+          <p>The proposed database tables are in <a href="supabase/rcop-dashboard-schema.sql">supabase/rcop-dashboard-schema.sql</a>. They have not been applied yet.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="access">
+      <span class="pill warn">Access decision needed</span>
+      <div class="grid">
+        <article class="card">
+          <h3>Option A: low friction</h3>
+          <p>Anyone with the link can read and submit. This is easiest for volunteers, but it is not private.</p>
+        </article>
+        <article class="card">
+          <h3>Option B: team login</h3>
+          <p>Committee members sign in with Supabase Auth/magic links. Better control, but slightly more admin.</p>
+        </article>
+        <article class="card">
+          <h3>Option C: private admin</h3>
+          <p>Public pages collect submissions, but only Sarah-Jane/Michael can see the working board. Best for sensitive content.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="callout">
+        <h3>Security note from Supabase</h3>
+        <p>The connected Supabase project already contains some existing public-schema tables with Row Level Security disabled, including integration/token-looking tables. I have not changed those. Before the dashboard is wired in, those existing tables should be reviewed carefully so we do not expose anything sensitive.</p>
+      </div>
+    </section>
+
+    <section id="next">
+      <span class="pill">Next build step</span>
+      <div class="list">
+        <div class="item">
+          <strong>Choose access model</strong>
+          <p>Decide whether the shared dashboard should be public-with-link, committee login, or private admin view.</p>
+        </div>
+        <div class="item">
+          <strong>Apply RCoP-only tables</strong>
+          <p>Once confirmed, apply only the <code>rcop_</code> tables and policies. Do not mix this with existing MedTech/GHL tables.</p>
+        </div>
+        <div class="item">
+          <strong>Replace localStorage</strong>
+          <p>Update the dashboard forms so new requests, questions, answers and file notes save into Supabase and appear for everyone.</p>
+        </div>
+        <div class="item">
+          <strong>Add uploads</strong>
+          <p>Create a storage bucket for asset uploads, grouped by Back to Basics, POM-S, regular emails, AGM and conference.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
