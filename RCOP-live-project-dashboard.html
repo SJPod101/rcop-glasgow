@@ -640,6 +640,301 @@
       overflow: hidden;
     }
 
+    .file-hub {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .file-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: var(--soft-shadow);
+      padding: 22px;
+      min-height: 100%;
+    }
+
+    .file-card.featured {
+      grid-column: span 2;
+      background:
+        linear-gradient(135deg, rgba(1, 125, 101, 0.1), rgba(255, 126, 132, 0.08)),
+        var(--white);
+      border-color: rgba(1, 125, 101, 0.24);
+    }
+
+    .file-card h3 {
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    .file-card p {
+      margin-bottom: 16px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .file-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .file-link {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdfc;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .file-link:hover {
+      border-color: rgba(1, 125, 101, 0.32);
+      background: var(--mint);
+      text-decoration: none;
+    }
+
+    .file-link strong,
+    .file-link span {
+      display: block;
+    }
+
+    .file-link strong {
+      color: var(--green-dark);
+      font-size: 14px;
+    }
+
+    .file-link span {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .file-link em {
+      flex: 0 0 auto;
+      color: var(--green);
+      font-style: normal;
+      font-weight: 900;
+    }
+
+    .file-note {
+      margin-top: 18px;
+      border-left: 4px solid var(--coral);
+      border-radius: 8px;
+      background: var(--warm);
+      padding: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .roadmap {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .roadmap-step {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: var(--soft-shadow);
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .roadmap-step::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: var(--green);
+    }
+
+    .roadmap-step.waiting::before {
+      background: var(--amber);
+    }
+
+    .roadmap-step.next::before {
+      background: var(--coral);
+    }
+
+    .roadmap-step.later::before {
+      background: var(--blue);
+    }
+
+    .roadmap-number {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--mint);
+      color: var(--green-dark);
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+
+    .roadmap-step h3 {
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+
+    .roadmap-step p {
+      margin-bottom: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .roadmap-mini {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .roadmap-mini li {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdfc;
+      padding: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .people-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .person-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      padding: 16px;
+      box-shadow: var(--soft-shadow);
+    }
+
+    .person-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .avatar {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      overflow: hidden;
+      background: var(--mint);
+      color: var(--green-dark);
+      font-weight: 900;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .person-card h3 {
+      margin-bottom: 2px;
+      font-size: 17px;
+    }
+
+    .person-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .question-summary {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin: 16px 0;
+    }
+
+    .question-stat {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: var(--soft-shadow);
+      padding: 18px;
+    }
+
+    .question-stat strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--green-dark);
+      font-size: 24px;
+    }
+
+    .question-stat span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .question-drawer {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: var(--soft-shadow);
+      overflow: hidden;
+      margin-top: 14px;
+    }
+
+    .question-drawer summary {
+      cursor: pointer;
+      padding: 18px 20px;
+      color: var(--green-dark);
+      font-size: 18px;
+      font-weight: 900;
+      list-style: none;
+    }
+
+    .question-drawer summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .question-drawer summary::after {
+      content: "+";
+      float: right;
+      color: var(--green);
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .question-drawer[open] summary::after {
+      content: "-";
+    }
+
+    .question-drawer .panel {
+      border: 0;
+      box-shadow: none;
+      border-top: 1px solid var(--line);
+      border-radius: 0;
+    }
+
     .panel table {
       width: 100%;
       border-collapse: collapse;
@@ -816,6 +1111,26 @@
       }
 
       .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .file-hub {
+        grid-template-columns: 1fr;
+      }
+
+      .file-card.featured {
+        grid-column: auto;
+      }
+
+      .roadmap {
+        grid-template-columns: 1fr;
+      }
+
+      .people-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .question-summary {
         grid-template-columns: 1fr;
       }
 
@@ -1451,123 +1766,82 @@
         <p>Direct links to the main documents, pages, intake areas and asset folders for the branch.</p>
       </div>
 
-      <div class="panel">
-        <table>
-          <thead>
-            <tr>
-              <th>File</th>
-              <th>Use</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><a href="branch-notes.html">branch-notes.html</a></td>
-              <td>Clean browser view of the branch notes and workstream context.</td>
-              <td>Use this instead of sending people raw Markdown files.</td>
-            </tr>
-            <tr>
-              <td><a href="ASSET-DROP-OFF-GUIDE.md">ASSET-DROP-OFF-GUIDE.md</a></td>
-              <td>Explains how committee members should drop files into the correct asset area.</td>
-              <td>Use this when sharing the dashboard with contributors.</td>
-            </tr>
-            <tr>
-              <td><a href="assets-index.html">assets-index.html</a></td>
-              <td>Browser-friendly asset index for all current project asset areas.</td>
-              <td>Use this instead of raw folder links when the browser shows an error.</td>
-            </tr>
-            <tr>
-              <td><a href="https://chat.whatsapp.com/BkGlfPdpic48PUXdY5pEKA?mode=gi_t" target="_blank" rel="noopener">Branch WhatsApp group</a></td>
-              <td><svg class="social-icon" aria-hidden="true" style="color: #25d366; vertical-align: middle;"><use href="#icon-whatsapp"></use></svg> Direct invite link for the Glasgow Branch WhatsApp group.</td>
-              <td>Live link added. Share only with people who should have access.</td>
-            </tr>
-            <tr>
-              <td><a href="action-requests.html">action-requests.html</a></td>
-              <td>Shared action request board for member update requests, website updates, social posts and decisions.</td>
-              <td>Visible local board only; no automatic pings, emails or task creation.</td>
-            </tr>
-            <tr>
-              <td><a href="live-backend-plan.html">live-backend-plan.html</a></td>
-              <td>Plain-English plan for moving the dashboard from local browser storage to shared Supabase data.</td>
-              <td>Draft backend route prepared; database not changed yet.</td>
-            </tr>
-            <tr>
-              <td><a href="https://glasgowrcop.org/glasgowbranch" target="_blank" rel="noopener">Glasgow Branch website</a></td>
-              <td>Live public branch website.</td>
-              <td>Direct external link.</td>
-            </tr>
-            <tr>
-              <td><a href="https://www.facebook.com/RCOPBranches/" target="_blank" rel="noopener">Branch Facebook page</a></td>
-              <td><svg class="social-icon" aria-hidden="true" style="color: #1877f2; vertical-align: middle;"><use href="#icon-facebook"></use></svg> Facebook link used by the Glasgow Branch website header.</td>
-              <td>Direct external link.</td>
-            </tr>
-            <tr>
-              <td><a href="agm-campaign-copy.html">agm-campaign-copy.html</a></td>
-              <td>Clean browser view of the AGM 2026 campaign copy.</td>
-              <td>Use this instead of sending people raw Markdown copy.</td>
-            </tr>
-            <tr>
-              <td><a href="HBGA-branch-chair-briefing-pack.md">HBGA-branch-chair-briefing-pack.md</a></td>
-              <td>Branch Chair briefing pack for Help Branches Grow Again.</td>
-              <td>Ready as campaign reference.</td>
-            </tr>
-            <tr>
-              <td><a href="thousand-small-steps.html">thousand-small-steps.html</a></td>
-              <td>Existing A Thousand Small Steps page.</td>
-              <td>Needs confirmed date, venue, and form route.</td>
-            </tr>
-            <tr>
-              <td><a href="glasgowbranch-ghl-rebuild.html">glasgowbranch-ghl-rebuild.html</a></td>
-              <td>Branch homepage rebuild file.</td>
-              <td>Ready for new cards/alerts.</td>
-            </tr>
-            <tr>
-              <td><a href="sc26-ghl-rebuild.html">sc26-ghl-rebuild.html</a></td>
-              <td>Scottish Conference 2026 page.</td>
-              <td>Current booking page file.</td>
-            </tr>
-            <tr>
-              <td><a href="rcop-glasgow-promo/PROMO_COPY.md">rcop-glasgow-promo/PROMO_COPY.md</a></td>
-              <td>SC26 captions, social copy, and key details.</td>
-              <td>Ready to reuse.</td>
-            </tr>
-            <tr>
-              <td><a href="rcop_glasgow_event_dates.csv">rcop_glasgow_event_dates.csv</a></td>
-              <td>Known event dates gathered from branch materials.</td>
-              <td>Useful reference; confirm current LA details.</td>
-            </tr>
-            <tr>
-              <td><a href="back-to-basics-intake.html">back-to-basics-intake.html</a></td>
-              <td>Drag/drop intake and notes area for Back to Basics updates.</td>
-              <td>Ready for Anne to use; final date/status needs confirmation.</td>
-            </tr>
-            <tr>
-              <td><a href="back-to-basics-assets/back-to-basics-live.png">back-to-basics-assets/back-to-basics-live.png</a></td>
-              <td>Current Back to Basics graphic pulled from the branch website.</td>
-              <td>Asset available locally.</td>
-            </tr>
-            <tr>
-              <td><a href="prescription-medications-intake.html">prescription-medications-intake.html</a></td>
-              <td>Drag/drop intake and notes area for Laura Jane's prescription-only medication CPD updates.</td>
-              <td>Ready for Laura Jane to use; full web page frame still to come.</td>
-            </tr>
-            <tr>
-              <td><a href="prescription-medications-assets/poms-current.png">prescription-medications-assets/poms-current.png</a></td>
-              <td>Current medication image pulled from the POM-S website page.</td>
-              <td>Asset available locally.</td>
-            </tr>
-            <tr>
-              <td><a href="regular-emails-intake.html">regular-emails-intake.html</a></td>
-              <td>Drag/drop intake for regular member emails, assets, links, resources and ideas.</td>
-              <td>Ready for committee use.</td>
-            </tr>
-            <tr>
-              <td><a href=".env.example">.env.example</a></td>
-              <td>Local secret template only; not used by the visible board.</td>
-              <td>Do not put live private keys in shared HTML.</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="file-hub">
+        <article class="file-card featured">
+          <span class="status ready">Start here</span>
+          <h3>Working Library</h3>
+          <p>The friendly route into the files. Use these buttons first, rather than digging through filenames.</p>
+          <div class="links">
+            <a class="button primary" href="assets-index.html">Open assets index</a>
+            <a class="button" href="branch-notes.html">Open branch notes</a>
+            <a class="button" href="action-requests.html">Add a request</a>
+          </div>
+          <div class="file-note">Tip: if a raw folder link fails in the browser, use the assets index. It gives the team a safer route into the right area.</div>
+        </article>
+
+        <article class="file-card">
+          <span class="status ready">Live links</span>
+          <h3>Branch Channels</h3>
+          <p>Fast access to the places the committee already uses.</p>
+          <div class="file-list">
+            <a class="file-link" href="https://chat.whatsapp.com/BkGlfPdpic48PUXdY5pEKA?mode=gi_t" target="_blank" rel="noopener">
+              <span><strong>Branch WhatsApp</strong><span>Main committee group link</span></span><em>&rarr;</em>
+            </a>
+            <a class="file-link" href="https://glasgowrcop.org/glasgowbranch" target="_blank" rel="noopener">
+              <span><strong>Branch Website</strong><span>Live public branch page</span></span><em>&rarr;</em>
+            </a>
+            <a class="file-link" href="https://www.facebook.com/RCOPBranches/" target="_blank" rel="noopener">
+              <span><strong>Facebook Page</strong><span>Branch social channel</span></span><em>&rarr;</em>
+            </a>
+          </div>
+        </article>
+
+        <article class="file-card">
+          <span class="status draft">AGM</span>
+          <h3>Campaign Pages</h3>
+          <p>Member-facing AGM links and briefing material.</p>
+          <div class="file-list">
+            <a class="file-link" href="agm-campaign-copy.html"><span><strong>Campaign Hub</strong><span>Main AGM campaign page</span></span><em>&rarr;</em></a>
+            <a class="file-link" href="agm-branch-funding-motion.html"><span><strong>Branch Funding</strong><span>Help Branches Grow Again</span></span><em>&rarr;</em></a>
+            <a class="file-link" href="agm-podiatrist-consultation-motion.html"><span><strong>Consultation Motion</strong><span>The Podiatrist motion</span></span><em>&rarr;</em></a>
+            <a class="file-link" href="agm-proxy-guide.html"><span><strong>Proxy Guide</strong><span>Awaiting official process</span></span><em>&rarr;</em></a>
+          </div>
+        </article>
+
+        <article class="file-card">
+          <span class="status draft">Drop-off spaces</span>
+          <h3>Intake Areas</h3>
+          <p>Places for committee members to add notes, assets and page updates.</p>
+          <div class="file-list">
+            <a class="file-link" href="back-to-basics-intake.html"><span><strong>Back to Basics</strong><span>Dates, profiles, photos, notes</span></span><em>&rarr;</em></a>
+            <a class="file-link" href="prescription-medications-intake.html"><span><strong>POM-S CPD</strong><span>Laura Jane's medication CPD area</span></span><em>&rarr;</em></a>
+            <a class="file-link" href="regular-emails-intake.html"><span><strong>Regular Emails</strong><span>Ideas, copy, links and attachments</span></span><em>&rarr;</em></a>
+          </div>
+        </article>
+
+        <article class="file-card">
+          <span class="status ready">Branch pages</span>
+          <h3>Current Builds</h3>
+          <p>Pages and campaign assets being actively worked on.</p>
+          <div class="file-list">
+            <a class="file-link" href="thousand-small-steps.html"><span><strong>A Thousand Small Steps</strong><span>Public speaking project page</span></span><em>&rarr;</em></a>
+            <a class="file-link" href="glasgowbranch-ghl-rebuild.html"><span><strong>Branch Homepage Rebuild</strong><span>Homepage working file</span></span><em>&rarr;</em></a>
+            <a class="file-link" href="sc26-ghl-rebuild.html"><span><strong>Scottish Conference 2026</strong><span>Conference page</span></span><em>&rarr;</em></a>
+            <a class="file-link" href="rcop-glasgow-promo/PROMO_COPY.md"><span><strong>SC26 Promo Copy</strong><span>Social captions and details</span></span><em>&rarr;</em></a>
+          </div>
+        </article>
+
+        <article class="file-card">
+          <span class="status waiting">Admin</span>
+          <h3>Reference and Setup</h3>
+          <p>Useful background files. Keep private keys out of public pages.</p>
+          <div class="file-list">
+            <a class="file-link" href="HBGA-branch-chair-briefing-pack.md"><span><strong>HBGA Briefing Pack</strong><span>Branch Chair briefing</span></span><em>&rarr;</em></a>
+            <a class="file-link" href="rcop_glasgow_event_dates.csv"><span><strong>Event Dates</strong><span>Known dates reference</span></span><em>&rarr;</em></a>
+            <a class="file-link" href="live-backend-plan.html"><span><strong>Backend Plan</strong><span>Supabase route, not yet connected</span></span><em>&rarr;</em></a>
+            <a class="file-link" href=".env.example"><span><strong>Secret Template</strong><span>No live keys in shared HTML</span></span><em>&rarr;</em></a>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -1588,38 +1862,51 @@
         </div>
       </div>
 
-      <div class="two-col">
-        <article class="card">
-          <h3>Build and admin actions</h3>
-          <ul class="list">
-            <li>Keep the AGM campaign hub updated as official motion/proxy details come in.</li>
-            <li>Keep the dashboard live and tidy so branch work is easy to find quickly.</li>
-            <li>Add June Back to Basics details: Billy and Sarah-Jane confirmed.</li>
-            <li>Add more Back to Basics dates once Anne confirms the forward programme.</li>
-            <li>Keep A Thousand Small Steps ready for any venue, date, and form updates.</li>
-            <li>Prepare the next conference early-bird banner/page once details are confirmed.</li>
-            <li>Use the Back to Basics intake to collect Anne's new dates, profiles, pictures, and page notes.</li>
-            <li>Add the Royal College of Podiatry Glasgow Branch podcast as a coming-soon Back to Basics training item; Sarah-Jane is building this up.</li>
-            <li>Use the prescription-only medication intake to collect Laura Jane's dates, speaker notes, pictures, and page assets.</li>
-            <li>Use the regular emails intake to collect member email resources, links, assets and ideas.</li>
-            <li>Keep any StreamYard/Zoom notes focused on costs, renewal dates, invoices and recent usage.</li>
+      <div class="roadmap">
+        <article class="roadmap-step">
+          <div class="roadmap-number">1</div>
+          <span class="status ready">Live now</span>
+          <h3>Keep the Hub Tidy</h3>
+          <p>The dashboard, AGM hub and key links are live. Keep this as the central place rather than starting new scattered files.</p>
+          <ul class="roadmap-mini">
+            <li>Keep AGM pages updated as official details arrive.</li>
+            <li>Keep action requests visible here and share to WhatsApp only when needed.</li>
           </ul>
         </article>
 
-        <article class="card">
-          <h3>Confirmations needed</h3>
-          <ul class="list">
-            <li>Confirm College proxy guidance when published or received.</li>
-            <li>Send the full Podiatrist consultation motion wording.</li>
-            <li>Confirm A Thousand Small Steps venue, date, and sign-up route.</li>
-            <li>Confirm LA update details and booking link.</li>
-            <li>Confirm next Scottish Conference date, location, price, and offer mechanism.</li>
-            <li>Confirm June Back to Basics delivery format and any booking link for Billy and Sarah-Jane.</li>
-            <li>Confirm whether future Back to Basics is Facebook Live, in person, Zoom, or mixed going forward.</li>
-            <li>Confirm the podcast format, hosting route, launch timing, and how it should connect to Back to Basics training.</li>
-            <li>Provide the website page frame for the prescription-only medication CPD page.</li>
-            <li>Keep action requests visible on the dashboard and use manual WhatsApp sharing only when a request needs a group nudge.</li>
-            <li>Record Zoom and StreamYard renewal dates, annual costs, and recent usage.</li>
+        <article class="roadmap-step next">
+          <div class="roadmap-number">2</div>
+          <span class="status waiting">Next update</span>
+          <h3>Back to Basics</h3>
+          <p>June is confirmed with Billy and Sarah-Jane. The next job is to make that visible and collect any support assets.</p>
+          <ul class="roadmap-mini">
+            <li>Add June details, format and booking link.</li>
+            <li>Add more dates once Anne confirms the programme.</li>
+            <li>Connect podcast planning to Back to Basics training.</li>
+          </ul>
+        </article>
+
+        <article class="roadmap-step waiting">
+          <div class="roadmap-number">3</div>
+          <span class="status waiting">Waiting</span>
+          <h3>Confirm Details</h3>
+          <p>These items can move quickly once the missing facts arrive.</p>
+          <ul class="roadmap-mini">
+            <li>College proxy process and full Podiatrist motion wording.</li>
+            <li>A Thousand Small Steps venue, date and sign-up route.</li>
+            <li>LA update and POM-S page details.</li>
+          </ul>
+        </article>
+
+        <article class="roadmap-step later">
+          <div class="roadmap-number">4</div>
+          <span class="status draft">Review</span>
+          <h3>Later Checks</h3>
+          <p>Important, but not blocking today's dashboard and AGM work.</p>
+          <ul class="roadmap-mini">
+            <li>Scottish Conference early-bird offer mechanism.</li>
+            <li>Zoom and StreamYard costs, renewal dates and usage.</li>
+            <li>Future Supabase/live backend route.</li>
           </ul>
         </article>
       </div>
@@ -1631,29 +1918,54 @@
         <p>A quick distinction between branch coordination and invited contributors.</p>
       </div>
 
-      <div class="two-col">
-        <article class="card">
-          <h3>Branch coordination</h3>
-          <ul class="list">
-            <li>Michael Stevenson: Chair, Glasgow Branch.</li>
-            <li>Sarah-Jane Walls: Treasurer, Glasgow Branch. Finance/treasury oversight and main technical support.</li>
-            <li>Nancy Skelleher: Branch Secretary.</li>
-            <li>Cheryl Braidwood: branch member, NHS link and vascular specialist.</li>
-            <li>Laura Jane: branch member, prescription-only medication CPD lead.</li>
-            <li>Heather: student link coordinator.</li>
-            <li>Anne Melville: Back to Basics organiser.</li>
-            <li>Ryta: trades coordinator and trade link.</li>
-          </ul>
+      <div class="people-grid">
+        <article class="person-card">
+          <div class="person-head"><div class="avatar">MS</div><div><h3>Michael Stevenson</h3><p>Chair, Glasgow Branch</p></div></div>
+          <span class="status ready">Branch coordination</span>
         </article>
-
-        <article class="card">
-          <h3>Guest speakers and contributors</h3>
-          <ul class="list">
-            <li>Jackie Locke: LA update guest speaker/contributor.</li>
-            <li>Dave James: public speaking workshop guest/facilitator.</li>
-            <li>Jill Woods: practice mentor contributor/facilitator.</li>
-            <li>Tyson Franklin: business-related guest contributor.</li>
-          </ul>
+        <article class="person-card">
+          <div class="person-head"><div class="avatar">SJ</div><div><h3>Sarah-Jane Walls</h3><p>Treasurer and main technical support</p></div></div>
+          <span class="status ready">Branch coordination</span>
+        </article>
+        <article class="person-card">
+          <div class="person-head"><div class="avatar">NS</div><div><h3>Nancy Skelleher</h3><p>Branch Secretary</p></div></div>
+          <span class="status ready">Branch coordination</span>
+        </article>
+        <article class="person-card">
+          <div class="person-head"><div class="avatar">CB</div><div><h3>Cheryl Braidwood</h3><p>NHS link and vascular specialist</p></div></div>
+          <span class="status ready">Branch member</span>
+        </article>
+        <article class="person-card">
+          <div class="person-head"><div class="avatar">LJ</div><div><h3>Laura Jane</h3><p>Prescription-only medication CPD lead</p></div></div>
+          <span class="status draft">CPD</span>
+        </article>
+        <article class="person-card">
+          <div class="person-head"><div class="avatar">H</div><div><h3>Heather</h3><p>Student link coordinator</p></div></div>
+          <span class="status draft">Students</span>
+        </article>
+        <article class="person-card">
+          <div class="person-head"><div class="avatar">AM</div><div><h3>Anne Melville</h3><p>Back to Basics organiser</p></div></div>
+          <span class="status draft">Back to Basics</span>
+        </article>
+        <article class="person-card">
+          <div class="person-head"><div class="avatar">R</div><div><h3>Ryta</h3><p>Trades coordinator and trade link</p></div></div>
+          <span class="status draft">Trades</span>
+        </article>
+        <article class="person-card">
+          <div class="person-head"><div class="avatar">JL</div><div><h3>Jackie Locke</h3><p>LA update guest contributor</p></div></div>
+          <span class="status waiting">Guest</span>
+        </article>
+        <article class="person-card">
+          <div class="person-head"><div class="avatar"><img src="thousand-small-steps-assets/dave-james-speaker-coach.jpg" alt="Dave James"></div><div><h3>Dave James</h3><p>Public speaking workshop facilitator</p></div></div>
+          <span class="status waiting">Guest</span>
+        </article>
+        <article class="person-card">
+          <div class="person-head"><div class="avatar"><img src="thousand-small-steps-assets/jill-woods-practice-momentum.jpg" alt="Jill Woods"></div><div><h3>Jill Woods</h3><p>Practice mentor facilitator</p></div></div>
+          <span class="status waiting">Guest</span>
+        </article>
+        <article class="person-card">
+          <div class="person-head"><div class="avatar">TF</div><div><h3>Tyson Franklin</h3><p>Business-related guest contributor</p></div></div>
+          <span class="status waiting">Guest</span>
         </article>
       </div>
     </section>
@@ -1668,7 +1980,15 @@
         <p><strong>Most important dependency:</strong> the AGM page can go live as an information and updates page now, but proxy instructions should wait until official College guidance is confirmed.</p>
       </div>
 
-      <div class="panel" style="margin-top: 16px;">
+      <div class="question-summary">
+        <div class="question-stat"><strong>AGM</strong><span>Proxy and motion wording are the key blockers.</span></div>
+        <div class="question-stat"><strong>Events</strong><span>Back to Basics, LA update, POM-S and conference dates need tidied.</span></div>
+        <div class="question-stat"><strong>Comms</strong><span>Answers can be added here and shared manually to WhatsApp.</span></div>
+      </div>
+
+      <details class="question-drawer">
+        <summary>Open questions, answers and comments</summary>
+      <div class="panel">
         <table>
           <thead>
             <tr>
@@ -1818,6 +2138,7 @@
           <div id="question-responses"></div>
         </div>
       </div>
+      </details>
     </section>
   </main>
 
