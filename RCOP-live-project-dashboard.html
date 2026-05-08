@@ -122,7 +122,7 @@
       align-items: center;
       justify-content: flex-end;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 10px;
       font-size: 13px;
     }
 
@@ -136,9 +136,20 @@
       text-decoration: none;
     }
 
+    .nav a.nav-feature {
+      background: var(--coral);
+      color: var(--ink);
+      box-shadow: 0 10px 24px rgba(255, 126, 132, 0.2);
+    }
+
     .nav a:hover {
       background: rgba(255, 255, 255, 0.12);
       color: var(--white);
+    }
+
+    .nav a.nav-feature:hover {
+      background: #ff979c;
+      color: var(--ink);
     }
 
     .hero {
@@ -253,6 +264,18 @@
       scrollbar-width: thin;
     }
 
+    .jump-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-right: 10px;
+      border-right: 1px solid var(--line);
+    }
+
+    .jump-group:last-child {
+      border-right: 0;
+    }
+
     .jumpbar-label {
       flex: 0 0 auto;
       color: var(--muted);
@@ -283,6 +306,102 @@
       border-color: rgba(1, 125, 101, 0.32);
       background: var(--mint);
       text-decoration: none;
+    }
+
+    .jumpbar a.jump-feature {
+      border-color: var(--green);
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .agm-spotlight {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(360px, 1.05fr);
+      gap: 18px;
+      align-items: stretch;
+      border: 1px solid rgba(1, 125, 101, 0.22);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .agm-visual {
+      min-height: 360px;
+      background:
+        linear-gradient(140deg, rgba(0, 75, 67, 0.92), rgba(0, 3, 33, 0.42)),
+        url("thousand-small-steps-assets/branch-community-01-panel-discussion.jpg") center / cover no-repeat;
+      color: var(--white);
+      padding: 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .agm-visual h2 {
+      max-width: 560px;
+      margin-bottom: 14px;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1;
+    }
+
+    .agm-visual p {
+      max-width: 560px;
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .agm-panel {
+      padding: 28px;
+    }
+
+    .agm-links {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .agm-link {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdfc;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .agm-link:hover {
+      border-color: rgba(1, 125, 101, 0.32);
+      background: var(--mint);
+      text-decoration: none;
+    }
+
+    .agm-link strong {
+      display: block;
+      color: var(--green-dark);
+      font-size: 16px;
+    }
+
+    .agm-link span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      margin-top: 3px;
+    }
+
+    .agm-link em {
+      flex: 0 0 auto;
+      color: var(--green);
+      font-style: normal;
+      font-size: 20px;
+      font-weight: 900;
     }
 
     .section-header {
@@ -675,6 +794,19 @@
         top: 118px;
       }
 
+      .jump-group {
+        border-right: 0;
+        padding-right: 0;
+      }
+
+      .agm-spotlight {
+        grid-template-columns: 1fr;
+      }
+
+      .agm-visual {
+        min-height: 280px;
+      }
+
       .hero-inner {
         padding: 44px 0;
       }
@@ -731,14 +863,10 @@
         </div>
       </div>
       <nav class="nav" aria-label="Project navigation">
-        <a href="#dropoffs">Quick Areas</a>
-        <a href="#medtech">MedTech</a>
-        <a href="#workstreams">Workstreams</a>
-        <a href="branch-notes.html">Notes</a>
-        <a href="action-requests.html">Action Requests</a>
-        <a href="#whatsapp">WhatsApp</a>
+        <a class="nav-feature" href="#agm-hub">AGM Hub</a>
+        <a href="#dropoffs">Branch Work</a>
+        <a href="action-requests.html">Requests</a>
         <a href="#files">Files</a>
-        <a href="#actions">Actions</a>
         <a href="#people">People</a>
         <a href="#questions">Questions</a>
       </nav>
@@ -752,6 +880,7 @@
           <h1>Don't See</h1>
           <p>One easy place to see what the Glasgow Branch is working on, find the right files quickly, and drop in notes, ideas, assets or updates without getting lost in different folders.</p>
           <div class="hero-actions">
+            <a class="button primary" href="#agm-hub">Open AGM Hub</a>
             <a class="button primary" href="action-requests.html">Request action</a>
             <a class="button" href="assets-index.html">Open assets</a>
             <a class="button" href="https://glasgowrcop.org/glasgowbranch" target="_blank" rel="noopener">Branch website</a>
@@ -770,18 +899,62 @@
 
     <nav class="jumpbar" aria-label="Quick jump menu">
       <div class="jumpbar-inner">
-        <span class="jumpbar-label">Jump to</span>
-        <a href="#dropoffs">Quick Areas</a>
-        <a href="#whatsapp">WhatsApp</a>
-        <a href="#medtech">MedTech</a>
-        <a href="#workstreams">Workstreams</a>
-        <a href="branch-notes.html">Notes</a>
-        <a href="#files">Files</a>
-        <a href="#actions">Actions</a>
-        <a href="#people">People</a>
-        <a href="#questions">Questions</a>
+        <div class="jump-group">
+          <span class="jumpbar-label">AGM</span>
+          <a class="jump-feature" href="#agm-hub">Hub</a>
+          <a href="agm-branch-funding-motion.html">Branch funding</a>
+          <a href="agm-podiatrist-consultation-motion.html">Consultation motion</a>
+          <a href="agm-proxy-guide.html">Proxy guide</a>
+        </div>
+        <div class="jump-group">
+          <span class="jumpbar-label">Branch</span>
+          <a href="#dropoffs">Quick areas</a>
+          <a href="#whatsapp">WhatsApp</a>
+          <a href="#medtech">MedTech</a>
+          <a href="#workstreams">Workstreams</a>
+        </div>
+        <div class="jump-group">
+          <span class="jumpbar-label">Working</span>
+          <a href="action-requests.html">Requests</a>
+          <a href="#files">Files</a>
+          <a href="#actions">Actions</a>
+          <a href="#people">People</a>
+          <a href="#questions">Questions</a>
+        </div>
       </div>
     </nav>
+
+    <section class="section shell" id="agm-hub">
+      <div class="agm-spotlight">
+        <div class="agm-visual">
+          <span class="status ready">AGM 2026</span>
+          <h2>Campaign Hub</h2>
+          <p>One place for the Branch Activity Fund, The Podiatrist consultation motion, and the proxy voting guide.</p>
+        </div>
+        <div class="agm-panel">
+          <span class="status draft">Vote YES campaign</span>
+          <h3>AGM campaign pages</h3>
+          <p>Use these links for the current campaign copy and the three member-facing pages. Proxy wording stays cautious until official College guidance is confirmed.</p>
+          <div class="links">
+            <a class="button primary" href="agm-campaign-copy.html">Open campaign hub</a>
+          </div>
+          <div class="agm-links" aria-label="AGM campaign links">
+            <a class="agm-link" href="agm-branch-funding-motion.html">
+              <span><strong>Branch Funding</strong><span>Help Branches Grow Again and the 2% Branch Activity Fund.</span></span>
+              <em>&rarr;</em>
+            </a>
+            <a class="agm-link" href="agm-podiatrist-consultation-motion.html">
+              <span><strong>Consultation Motion</strong><span>Member consultation on the future of The Podiatrist.</span></span>
+              <em>&rarr;</em>
+            </a>
+            <a class="agm-link" href="agm-proxy-guide.html">
+              <span><strong>Proxy Guide</strong><span>Placeholder guidance ready to update when the process is confirmed.</span></span>
+              <em>&rarr;</em>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="section shell" id="dropoffs">
       <div class="section-header">
