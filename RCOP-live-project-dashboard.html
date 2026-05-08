@@ -1440,6 +1440,7 @@
               <th>Question</th>
               <th>Owner</th>
               <th>Needed for</th>
+              <th>Answer</th>
             </tr>
           </thead>
           <tbody id="open-questions-body">
@@ -1548,9 +1549,9 @@
           <p id="new-question-status" class="muted" role="status" style="margin-top: 10px;"></p>
         </div>
 
-        <div class="response-form">
+        <div class="response-form" id="answer-question-form">
           <h3>Add an answer or comment</h3>
-          <p class="muted">If you know the answer to an open question, or want to add context, put it here. Responses are saved in this browser and can be exported for the shared working record.</p>
+          <p class="muted">Click Answer beside a question, add the response here, then share it to WhatsApp if the group needs to see it.</p>
           <div class="response-grid">
             <div>
               <label for="question-select">Question</label>
@@ -1567,6 +1568,10 @@
           </div>
           <div class="links" style="margin-top: 14px;">
             <button class="button primary" type="button" id="save-response">Add response</button>
+            <button class="button social-whatsapp" type="button" id="share-current-response">
+              <svg class="social-icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+              <span>Share to WhatsApp</span>
+            </button>
             <button class="button" type="button" id="copy-responses">Copy responses</button>
             <button class="button" type="button" id="download-responses">Download responses</button>
             <button class="button" type="button" id="save-responses-folder">Save to chosen folder</button>
@@ -1677,6 +1682,21 @@
       ].join("\n");
     }
 
+    function shareToWhatsApp(text) {
+      window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank", "noopener");
+    }
+
+    function currentResponseTextBlock() {
+      const questions = getQuestions();
+      const selected = questions.find((question) => question.id === questionSelect.value);
+      return responseTextBlock({
+        question: selected ? selected.question : "Open question",
+        by: responseBy.value.trim(),
+        createdAt: new Date().toISOString(),
+        text: responseText.value.trim() || "No answer/comment added yet."
+      });
+    }
+
     function renderQuestionOptions() {
       const questions = getQuestions();
       questionSelect.innerHTML = "";
@@ -1685,6 +1705,21 @@
         option.value = question.id;
         option.textContent = question.question;
         questionSelect.appendChild(option);
+      });
+    }
+
+    function renderQuestionActions() {
+      const questions = getQuestions();
+      Array.from(questionTableBody.querySelectorAll("tr")).forEach((row, index) => {
+        const question = questions[index];
+        if (!question) return;
+        let actionCell = row.querySelector("[data-question-action]");
+        if (!actionCell) {
+          actionCell = document.createElement("td");
+          actionCell.dataset.questionAction = "true";
+          row.appendChild(actionCell);
+        }
+        actionCell.innerHTML = `<button class="button answer-question" type="button" data-question-id="${escapeHTML(question.id)}">Answer</button>`;
       });
     }
 
@@ -1697,9 +1732,11 @@
           <td>${escapeHTML(question.question)}</td>
           <td>${escapeHTML(question.owner || "Not assigned")}</td>
           <td>${escapeHTML(question.neededFor || "To confirm")}</td>
+          <td data-question-action="true"><button class="button answer-question" type="button" data-question-id="${escapeHTML(question.id)}">Answer</button></td>
         `;
         questionTableBody.appendChild(row);
       });
+      renderQuestionActions();
     }
 
     function renderResponses() {
@@ -1717,6 +1754,12 @@
           <h3>${escapeHTML(response.question)}</h3>
           <p class="response-meta">By ${escapeHTML(response.by || "Not stated")} · ${new Date(response.createdAt).toLocaleString()}</p>
           <p>${escapeHTML(response.text).replace(/\n/g, "<br>")}</p>
+          <div class="links">
+            <button class="button social-whatsapp share-saved-response" type="button" data-response-id="${escapeHTML(response.id)}">
+              <svg class="social-icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+              <span>Share to WhatsApp</span>
+            </button>
+          </div>
         `;
         responsesEl.appendChild(item);
       });
@@ -1772,6 +1815,7 @@
       newQuestionStatus.textContent = "Question added to the open questions list.";
       renderAddedQuestions();
       renderQuestionOptions();
+      renderQuestionActions();
     });
 
     document.getElementById("download-questions").addEventListener("click", () => {
@@ -1807,6 +1851,32 @@
       renderResponses();
     });
 
+    document.getElementById("share-current-response").addEventListener("click", () => {
+      if (!responseText.value.trim()) {
+        responseStatus.textContent = "Add an answer or comment before sharing.";
+        return;
+      }
+      shareToWhatsApp(currentResponseTextBlock());
+      responseStatus.textContent = "WhatsApp opened with this answer ready to send.";
+    });
+
+    questionTableBody.addEventListener("click", (event) => {
+      const button = event.target.closest(".answer-question");
+      if (!button) return;
+      questionSelect.value = button.dataset.questionId;
+      document.getElementById("answer-question-form").scrollIntoView({ behavior: "smooth", block: "start" });
+      responseText.focus({ preventScroll: true });
+    });
+
+    responsesEl.addEventListener("click", (event) => {
+      const button = event.target.closest(".share-saved-response");
+      if (!button) return;
+      const response = loadResponses().find((item) => item.id === button.dataset.responseId);
+      if (!response) return;
+      shareToWhatsApp(responseTextBlock(response));
+      responseStatus.textContent = "WhatsApp opened with the saved response ready to send.";
+    });
+
     document.getElementById("copy-responses").addEventListener("click", async () => {
       const responses = loadResponses();
       const text = responses.length ? responses.map(responseTextBlock).join("\n\n---\n\n") : "No open question responses yet.";
@@ -1839,6 +1909,7 @@
 
     renderAddedQuestions();
     renderQuestionOptions();
+    renderQuestionActions();
     renderResponses();
     renderDashboardActionRequests();
   </script>
