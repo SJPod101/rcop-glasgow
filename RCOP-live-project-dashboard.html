@@ -21,6 +21,7 @@
       --mint: #dff4ee;
       --shadow: 0 18px 44px rgba(17, 24, 39, 0.09);
       --soft-shadow: 0 10px 26px rgba(17, 24, 39, 0.07);
+      --warm: #fff8f3;
     }
 
     * {
@@ -35,6 +36,8 @@
       margin: 0;
       color: var(--ink);
       background:
+        radial-gradient(circle at 8% 8%, rgba(255, 126, 132, 0.08), transparent 28%),
+        radial-gradient(circle at 92% 12%, rgba(1, 125, 101, 0.10), transparent 34%),
         linear-gradient(180deg, #ffffff 0, var(--paper) 420px),
         var(--paper);
       font-family: Arial, Helvetica, sans-serif;
@@ -77,7 +80,28 @@
     }
 
     .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       min-width: 240px;
+    }
+
+    .brand-logo {
+      width: 58px;
+      height: 58px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      overflow: hidden;
+    }
+
+    .brand-logo img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      display: block;
     }
 
     .brand strong {
@@ -271,7 +295,7 @@
 
     .section-header h2 {
       margin-bottom: 0;
-      font-size: 31px;
+      font-size: 36px;
       line-height: 1.15;
     }
 
@@ -330,6 +354,51 @@
 
     .card.feature:hover .card-visual img {
       transform: scale(1.04);
+    }
+
+    .work-card {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .work-visual {
+      height: 132px;
+      background: var(--green-dark);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .work-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 3, 33, 0.02), rgba(0, 3, 33, 0.28));
+    }
+
+    .work-visual img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.25s ease;
+    }
+
+    .work-card:hover .work-visual img {
+      transform: scale(1.04);
+    }
+
+    .work-content {
+      padding: 22px;
+      display: flex;
+      min-height: 270px;
+      flex: 1;
+      flex-direction: column;
+    }
+
+    .work-content .links {
+      margin-top: auto;
+      padding-top: 6px;
     }
 
     .card-content {
@@ -653,8 +722,13 @@
   <header class="topbar">
     <div class="topbar-inner">
       <div class="brand">
-        <strong>RCoP Glasgow Branch</strong>
-        <span>Don't See</span>
+        <div class="brand-logo">
+          <img src="thousand-small-steps-assets/rcop-glasgow-logo-white-transparent.png" alt="RCoP Glasgow Branch">
+        </div>
+        <div>
+          <strong>RCoP Glasgow Branch</strong>
+          <span>Don't See</span>
+        </div>
       </div>
       <nav class="nav" aria-label="Project navigation">
         <a href="#dropoffs">Quick Areas</a>
@@ -920,149 +994,224 @@
       </div>
 
       <div class="grid">
-        <article class="card">
-          <span class="status draft">Build shell now</span>
-          <h3>AGM 2026 Campaign Hub</h3>
-          <p>One member-facing page with two vote YES sections: Branch Activity Fund and member consultation on The Podiatrist.</p>
-          <div class="links">
-            <a class="button primary" href="branch-notes.html#agm">Notes</a>
-            <a class="button" href="agm-campaign-copy.html">Campaign copy</a>
-            <a class="button" href="agm-branch-funding-motion.html">Branch funding</a>
-            <a class="button" href="agm-podiatrist-consultation-motion.html">Podiatrist motion</a>
-            <a class="button" href="agm-proxy-guide.html">Proxy guide</a>
+        <article class="card work-card">
+          <div class="work-visual">
+            <img src="thousand-small-steps-assets/branch-community-01-panel-discussion.jpg" alt="AGM campaign discussion">
+          </div>
+          <div class="work-content">
+            <span class="status draft">Build shell now</span>
+            <h3>AGM 2026 Campaign Hub</h3>
+            <p>One member-facing page with two vote YES sections: Branch Activity Fund and member consultation on The Podiatrist.</p>
+            <div class="links">
+              <a class="button primary" href="branch-notes.html#agm">Notes</a>
+              <a class="button" href="agm-campaign-copy.html">Campaign copy</a>
+              <a class="button" href="agm-branch-funding-motion.html">Branch funding</a>
+              <a class="button" href="agm-podiatrist-consultation-motion.html">Podiatrist motion</a>
+              <a class="button" href="agm-proxy-guide.html">Proxy guide</a>
+            </div>
           </div>
         </article>
 
-        <article class="card">
-          <span class="status waiting">Awaiting College guidance</span>
-          <h3>Proxy Voting Route</h3>
-          <p>Keep wording cautious until the College confirms the proxy mechanism, deadlines, and accepted submission formats.</p>
-          <div class="links">
-            <a class="button" href="branch-notes.html#agm">Notes</a>
+        <article class="card work-card">
+          <div class="work-visual">
+            <img src="thousand-small-steps-assets/community-room-web.jpg" alt="Committee working room">
+          </div>
+          <div class="work-content">
+            <span class="status waiting">Awaiting College guidance</span>
+            <h3>Proxy Voting Route</h3>
+            <p>Keep wording cautious until the College confirms the proxy mechanism, deadlines, and accepted submission formats.</p>
+            <div class="links">
+              <a class="button" href="branch-notes.html#agm">Notes</a>
+            </div>
           </div>
         </article>
 
-        <article class="card">
-          <span class="status draft">Page exists</span>
-          <h3>A Thousand Small Steps</h3>
-          <p>Public speaking and community outreach initiative with sign-up, Facebook group/community, milestones, and photo recognition.</p>
-          <div class="links">
-            <a class="button primary" href="thousand-small-steps.html">Open page</a>
-            <a class="button" href="assets-index.html#small-steps">Assets</a>
+        <article class="card work-card">
+          <div class="work-visual">
+            <img src="thousand-small-steps-assets/workshop-room-web.jpg" alt="A Thousand Small Steps workshop">
+          </div>
+          <div class="work-content">
+            <span class="status draft">Page exists</span>
+            <h3>A Thousand Small Steps</h3>
+            <p>Public speaking and community outreach initiative with sign-up, Facebook group/community, milestones, and photo recognition.</p>
+            <div class="links">
+              <a class="button primary" href="thousand-small-steps.html">Open page</a>
+              <a class="button" href="assets-index.html#small-steps">Assets</a>
+            </div>
           </div>
         </article>
 
-        <article class="card">
-          <span class="status ready">Live campaign asset</span>
-          <h3>Scottish Conference 2026</h3>
-          <p>Current conference page and promo copy for the Stirling conference on 23 May 2026.</p>
-          <div class="links">
-            <a class="button primary" href="sc26-ghl-rebuild.html">Open SC26 page</a>
-            <a class="button" href="rcop-glasgow-promo/PROMO_COPY.md">Promo copy</a>
+        <article class="card work-card">
+          <div class="work-visual">
+            <img src="rcop-glasgow-promo/assets/stock/conference-networking.jpg" alt="Scottish Conference networking">
+          </div>
+          <div class="work-content">
+            <span class="status ready">Live campaign asset</span>
+            <h3>Scottish Conference 2026</h3>
+            <p>Current conference page and promo copy for the Stirling conference on 23 May 2026.</p>
+            <div class="links">
+              <a class="button primary" href="sc26-ghl-rebuild.html">Open SC26 page</a>
+              <a class="button" href="rcop-glasgow-promo/PROMO_COPY.md">Promo copy</a>
+            </div>
           </div>
         </article>
 
-        <article class="card">
-          <span class="status waiting">Needs details</span>
-          <h3>Next Conference Early-Bird</h3>
-          <p>One-week launch offer after SC26: reserve next year's conference at this year's early-bird price.</p>
-          <div class="links">
-            <a class="button" href="branch-notes.html#conference">Notes</a>
+        <article class="card work-card">
+          <div class="work-visual">
+            <img src="rcop-glasgow-promo/assets/stock/conference-stage.jpg" alt="Conference stage">
+          </div>
+          <div class="work-content">
+            <span class="status waiting">Needs details</span>
+            <h3>Next Conference Early-Bird</h3>
+            <p>One-week launch offer after SC26: reserve next year's conference at this year's early-bird price.</p>
+            <div class="links">
+              <a class="button" href="branch-notes.html#conference">Notes</a>
+            </div>
           </div>
         </article>
 
-        <article class="card">
-          <span class="status waiting">Needs details</span>
-          <h3>LA Update</h3>
-          <p>Repush/tidy the LA update once current date, format, speaker, and booking link are confirmed.</p>
-          <div class="links">
-            <a class="button" href="rcop_glasgow_event_dates.csv">Event dates CSV</a>
+        <article class="card work-card">
+          <div class="work-visual">
+            <img src="ghl-homepage-assets/hero-training-room.jpg" alt="Branch training room">
+          </div>
+          <div class="work-content">
+            <span class="status waiting">Needs details</span>
+            <h3>LA Update</h3>
+            <p>Repush/tidy the LA update once current date, format, speaker, and booking link are confirmed.</p>
+            <div class="links">
+              <a class="button" href="rcop_glasgow_event_dates.csv">Event dates CSV</a>
+            </div>
           </div>
         </article>
 
-        <article class="card">
-          <span class="status draft">Intake area ready</span>
-          <h3>Prescription-only Medication CPD</h3>
-          <p>Laura Jane owns this area. Current POM-S information has been pulled from the website, and the intake page can collect dates, assets, speaker notes and files.</p>
-          <div class="links">
-            <a class="button primary" href="prescription-medications-intake.html">Open intake</a>
-            <a class="button" href="assets-index.html#prescription-medications">Assets</a>
+        <article class="card work-card">
+          <div class="work-visual">
+            <img src="prescription-medications-assets/poms-current.png" alt="Prescription-only medication CPD">
+          </div>
+          <div class="work-content">
+            <span class="status draft">Intake area ready</span>
+            <h3>Prescription-only Medication CPD</h3>
+            <p>Laura Jane owns this area. Current POM-S information has been pulled from the website, and the intake page can collect dates, assets, speaker notes and files.</p>
+            <div class="links">
+              <a class="button primary" href="prescription-medications-intake.html">Open intake</a>
+              <a class="button" href="assets-index.html#prescription-medications">Assets</a>
+            </div>
           </div>
         </article>
 
-        <article class="card">
-          <span class="status draft">Page exists</span>
-          <h3>Branch Homepage</h3>
-          <p>Add visible links/cards for AGM 2026, A Thousand Small Steps, SC26, and the LA update once confirmed.</p>
-          <div class="links">
-            <a class="button primary" href="glasgowbranch-ghl-rebuild.html">Open homepage</a>
+        <article class="card work-card">
+          <div class="work-visual">
+            <img src="ghl-homepage-assets/hero-conference-room.jpg" alt="Branch homepage">
+          </div>
+          <div class="work-content">
+            <span class="status draft">Page exists</span>
+            <h3>Branch Homepage</h3>
+            <p>Add visible links/cards for AGM 2026, A Thousand Small Steps, SC26, and the LA update once confirmed.</p>
+            <div class="links">
+              <a class="button primary" href="glasgowbranch-ghl-rebuild.html">Open homepage</a>
+            </div>
           </div>
         </article>
 
-        <article class="card">
-          <span class="status draft">Intake area ready</span>
-          <h3>Back to Basics</h3>
-          <p>Anne Melville owns this area. Current website details need confirming, and new dates, notes, photos, profiles, and assets can be collected through the intake page.</p>
-          <div class="links">
-            <a class="button primary" href="back-to-basics-intake.html">Open intake</a>
-            <a class="button" href="assets-index.html#back-to-basics">Assets</a>
+        <article class="card work-card">
+          <div class="work-visual">
+            <img src="back-to-basics-assets/back-to-basics-live.png" alt="Back to Basics">
+          </div>
+          <div class="work-content">
+            <span class="status draft">Intake area ready</span>
+            <h3>Back to Basics</h3>
+            <p>Anne Melville owns this area. Current website details need confirming, and new dates, notes, photos, profiles, and assets can be collected through the intake page.</p>
+            <div class="links">
+              <a class="button primary" href="back-to-basics-intake.html">Open intake</a>
+              <a class="button" href="assets-index.html#back-to-basics">Assets</a>
+            </div>
           </div>
         </article>
 
-        <article class="card">
-          <span class="status draft">Coming soon</span>
-          <h3>Branch Podcast</h3>
-          <p>Royal College of Podiatry Glasgow Branch podcast in development for Back to Basics training. Sarah-Jane is building this up.</p>
-          <div class="links">
-            <a class="button" href="branch-notes.html#podcast">Notes</a>
+        <article class="card work-card">
+          <div class="work-visual">
+            <img src="ghl-homepage-assets/hero-ultrasound.jpg" alt="Branch podcast">
+          </div>
+          <div class="work-content">
+            <span class="status draft">Coming soon</span>
+            <h3>Branch Podcast</h3>
+            <p>Royal College of Podiatry Glasgow Branch podcast in development for Back to Basics training. Sarah-Jane is building this up.</p>
+            <div class="links">
+              <a class="button" href="branch-notes.html#podcast">Notes</a>
+            </div>
           </div>
         </article>
 
-        <article class="card">
-          <span class="status waiting">Review before renewal</span>
-          <h3>StreamYard and Zoom</h3>
-          <p>Expenses review only: record the annual costs, renewal dates, invoices and recent usage for both subscriptions before the next renewal cycle.</p>
-          <div class="links">
-            <a class="button" href="branch-notes.html#streamyard-zoom">Notes</a>
+        <article class="card work-card">
+          <div class="work-visual">
+            <img src="ghl-homepage-assets/hero-tent-clinic.jpg" alt="StreamYard and Zoom review">
+          </div>
+          <div class="work-content">
+            <span class="status waiting">Review before renewal</span>
+            <h3>StreamYard and Zoom</h3>
+            <p>Expenses review only: record the annual costs, renewal dates, invoices and recent usage for both subscriptions before the next renewal cycle.</p>
+            <div class="links">
+              <a class="button" href="branch-notes.html#streamyard-zoom">Notes</a>
+            </div>
           </div>
         </article>
 
-        <article class="card">
-          <span class="status waiting">Needs briefing</span>
-          <h3>Podiatrist Consultation Motion</h3>
-          <p>Second AGM vote YES motion about member consultation before removing paper copies or changing publication access.</p>
-          <div class="links">
-            <a class="button" href="branch-notes.html#agm">Notes</a>
+        <article class="card work-card">
+          <div class="work-visual">
+            <img src="thousand-small-steps-assets/branch-community-04-feedback-panel.jpg" alt="Podiatrist consultation motion">
+          </div>
+          <div class="work-content">
+            <span class="status waiting">Needs briefing</span>
+            <h3>Podiatrist Consultation Motion</h3>
+            <p>Second AGM vote YES motion about member consultation before removing paper copies or changing publication access.</p>
+            <div class="links">
+              <a class="button" href="branch-notes.html#agm">Notes</a>
+            </div>
           </div>
         </article>
 
-        <article class="card">
-          <span class="status draft">Central context</span>
-          <h3>Full Project Hub</h3>
-          <p>The joined-up document with call notes, people, priorities, build list, open questions, and file references.</p>
-          <div class="links">
-            <a class="button primary" href="branch-notes.html">Open notes</a>
-            <a class="button" href="assets-index.html">Assets index</a>
-            <a class="button" href="branch-notes.html#source-files">Source files</a>
+        <article class="card work-card">
+          <div class="work-visual">
+            <img src="thousand-small-steps-assets/branch-community-02-kilt-networking.jpg" alt="Full project hub">
+          </div>
+          <div class="work-content">
+            <span class="status draft">Central context</span>
+            <h3>Full Project Hub</h3>
+            <p>The joined-up document with call notes, people, priorities, build list, open questions, and file references.</p>
+            <div class="links">
+              <a class="button primary" href="branch-notes.html">Open notes</a>
+              <a class="button" href="assets-index.html">Assets index</a>
+              <a class="button" href="branch-notes.html#source-files">Source files</a>
+            </div>
           </div>
         </article>
 
-        <article class="card">
-          <span class="status draft">Intake area ready</span>
-          <h3>Regular Emails</h3>
-          <p>Shared intake for branch members to drop resources, assets, links and ideas for member emails and updates.</p>
-          <div class="links">
-            <a class="button primary" href="regular-emails-intake.html">Open intake</a>
-            <a class="button" href="assets-index.html#regular-emails">Assets</a>
+        <article class="card work-card">
+          <div class="work-visual">
+            <img src="thousand-small-steps-assets/branch-community-07-social-evening.jpg" alt="Regular emails">
+          </div>
+          <div class="work-content">
+            <span class="status draft">Intake area ready</span>
+            <h3>Regular Emails</h3>
+            <p>Shared intake for branch members to drop resources, assets, links and ideas for member emails and updates.</p>
+            <div class="links">
+              <a class="button primary" href="regular-emails-intake.html">Open intake</a>
+              <a class="button" href="assets-index.html#regular-emails">Assets</a>
+            </div>
           </div>
         </article>
 
-        <article class="card">
-          <span class="status draft">Live board</span>
-          <h3>Action Requests</h3>
-          <p>Ask for an email nudge, website update, social post, asset change, booking link update or decision. This keeps requests visible to the working group.</p>
-          <div class="links">
-            <a class="button primary" href="action-requests.html">Open board</a>
+        <article class="card work-card">
+          <div class="work-visual">
+            <img src="thousand-small-steps-assets/branch-group-web.jpg" alt="Action requests">
+          </div>
+          <div class="work-content">
+            <span class="status draft">Live board</span>
+            <h3>Action Requests</h3>
+            <p>Ask for an email nudge, website update, social post, asset change, booking link update or decision. This keeps requests visible to the working group.</p>
+            <div class="links">
+              <a class="button primary" href="action-requests.html">Open board</a>
+            </div>
           </div>
         </article>
       </div>
