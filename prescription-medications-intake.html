@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prescription-only Medication CPD Intake | RCoP Glasgow Branch</title>
+  <style>
+    :root {
+      --ink: #111827;
+      --muted: #5d6878;
+      --line: #d9dee7;
+      --paper: #f6f8fb;
+      --white: #ffffff;
+      --green: #017d65;
+      --green-dark: #004b43;
+      --coral: #ff7e84;
+      --amber: #b76b00;
+      --blue: #1f4d7a;
+      --shadow: 0 18px 44px rgba(17, 24, 39, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    a {
+      color: var(--green-dark);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .shell {
+      width: min(1140px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    header {
+      background: var(--green-dark);
+      color: var(--white);
+    }
+
+    .top {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .top strong,
+    .top span {
+      display: block;
+    }
+
+    .top span {
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 13px;
+      margin-top: 2px;
+    }
+
+    .top a {
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 14px;
+    }
+
+    .hero {
+      background:
+        linear-gradient(115deg, rgba(0, 75, 67, 0.96), rgba(1, 125, 101, 0.72)),
+        url("prescription-medications-assets/poms-current.png") center / cover no-repeat;
+      color: var(--white);
+    }
+
+    .hero-inner {
+      padding: 48px 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+      gap: 28px;
+      align-items: center;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 780px;
+      margin-bottom: 14px;
+      font-size: clamp(34px, 5vw, 62px);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .hero-card,
+    .card,
+    .note {
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      padding: 18px;
+      background: rgba(0, 31, 28, 0.58);
+    }
+
+    main {
+      padding: 34px 0 46px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .card,
+    .note {
+      border: 1px solid var(--line);
+      background: var(--white);
+      padding: 20px;
+    }
+
+    .card + .card,
+    .note {
+      margin-top: 18px;
+    }
+
+    .card h2 {
+      margin-bottom: 10px;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .draft {
+      color: var(--blue);
+      background: #e8f0f8;
+    }
+
+    .waiting {
+      color: var(--amber);
+      background: #fff3df;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    .table th,
+    .table td {
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+
+    .table th {
+      width: 34%;
+      color: #273244;
+      background: #f0f4f7;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      color: #273244;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 11px 12px;
+      color: var(--ink);
+      background: var(--white);
+      font: inherit;
+      font-size: 14px;
+    }
+
+    textarea {
+      min-height: 96px;
+      resize: vertical;
+    }
+
+    .fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .field-full {
+      grid-column: 1 / -1;
+    }
+
+    .dropzone {
+      border: 2px dashed #9cb5ad;
+      border-radius: 8px;
+      padding: 28px;
+      background: #f2fbf8;
+      text-align: center;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .dropzone.dragging {
+      border-color: var(--green);
+      background: #e0f5ee;
+    }
+
+    .dropzone strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    button,
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      color: var(--green-dark);
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    button.primary,
+    .button.primary {
+      border-color: var(--green);
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .file-list {
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .file-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .preview {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .preview img,
+    .asset-image {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #eef2f6;
+    }
+
+    .preview img {
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .asset-image {
+      display: block;
+    }
+
+    @media (max-width: 900px) {
+      .top,
+      .hero-inner,
+      .grid,
+      .fields {
+        display: block;
+      }
+
+      .top nav,
+      .hero-card,
+      .grid > * + *,
+      .fields > * + * {
+        margin-top: 16px;
+      }
+
+      .preview {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="shell top">
+      <div>
+        <strong>Prescription-only Medication CPD Intake</strong>
+        <span>Royal College of Podiatry Glasgow Branch</span>
+      </div>
+      <nav>
+        <a href="RCOP-live-project-dashboard.html">Back to project dashboard</a>
+        &nbsp; | &nbsp;
+        <a href="action-requests.html?area=Prescription-only%20Medication%20CPD&requester=Laura%20Jane">Request action</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="shell hero-inner">
+      <div>
+        <h1>Prescription-only Medication CPD</h1>
+        <p>A working area for Laura Jane to add POM-S update information, dates, speaker assets, booking links, and files for the branch website.</p>
+      </div>
+      <aside class="hero-card">
+        <h2>Owner</h2>
+        <p>Laura Jane leads prescription-only medication CPD for the branch. This intake keeps her material together until the full web page is built.</p>
+      </aside>
+    </div>
+  </section>
+
+  <main class="shell">
+    <div class="grid">
+      <div>
+        <section class="card">
+          <span class="status draft">Current website information pulled</span>
+          <h2>What we know now</h2>
+          <p class="muted">This is the current POM-S information found on the Glasgow Branch website.</p>
+          <table class="table">
+            <tbody>
+              <tr>
+                <th>Current page</th>
+                <td><a href="https://glasgowrcop.org/poms" target="_blank" rel="noopener">glasgowrcop.org/poms</a></td>
+              </tr>
+              <tr>
+                <th>Course</th>
+                <td>POM-S update with Dr Jean Mooney</td>
+              </tr>
+              <tr>
+                <th>Format</th>
+                <td>Online via Zoom webinar, with recordings, resources and chat available in a dedicated course Facebook group.</td>
+              </tr>
+              <tr>
+                <th>Dates</th>
+                <td>6 May, 13 May, 20 May, 27 May and 5 June 2026.</td>
+              </tr>
+              <tr>
+                <th>Time</th>
+                <td>8pm</td>
+              </tr>
+              <tr>
+                <th>Prices</th>
+                <td>Members GBP70, non-members GBP95, students GBP35.</td>
+              </tr>
+              <tr>
+                <th>Booking link found</th>
+                <td><a href="https://form.jotform.com/261013057385351" target="_blank" rel="noopener">Jotform booking form</a></td>
+              </tr>
+              <tr>
+                <th>Local asset</th>
+                <td><a href="prescription-medications-assets/poms-current.png">prescription-medications-assets/poms-current.png</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="card">
+          <span class="status draft">Current image asset</span>
+          <h2>Current POM-S image</h2>
+          <img class="asset-image" src="prescription-medications-assets/poms-current.png" alt="Prescription medication image from current POM-S page">
+        </section>
+
+        <section class="note">
+          <h2>Website page still to build</h2>
+          <p class="muted">This page is for intake only. Sarah-Jane will provide the page-building frame separately, then this material can be used to build the public prescription-only medication CPD page.</p>
+        </section>
+      </div>
+
+      <div>
+        <section class="card">
+          <span class="status waiting">Laura Jane intake area</span>
+          <h2>Add POM-S / medication CPD content</h2>
+          <div class="fields">
+            <div>
+              <label for="session-title">Course/session title</label>
+              <input id="session-title" value="POM-S Update">
+            </div>
+            <div>
+              <label for="session-owner">Lead/contact</label>
+              <input id="session-owner" value="Laura Jane">
+            </div>
+            <div>
+              <label for="speaker">Speaker</label>
+              <input id="speaker" value="Dr Jean Mooney">
+            </div>
+            <div>
+              <label for="format">Format/location</label>
+              <input id="format" value="Online Zoom webinar">
+            </div>
+            <div>
+              <label for="dates">Dates</label>
+              <input id="dates" value="6 May, 13 May, 20 May, 27 May and 5 June 2026">
+            </div>
+            <div>
+              <label for="time">Time</label>
+              <input id="time" value="20:00">
+            </div>
+            <div class="field-full">
+              <label for="booking-link">Booking or event link</label>
+              <input id="booking-link" value="https://form.jotform.com/261013057385351">
+            </div>
+            <div class="field-full">
+              <label for="summary">Short page summary</label>
+              <textarea id="summary">Prescription-only medication CPD update for podiatrists requiring a refresher for College insurance criteria, delivered online with recordings and resources available.</textarea>
+            </div>
+            <div class="field-full">
+              <label for="speaker-profile">Speaker/profile notes</label>
+              <textarea id="speaker-profile" placeholder="Speaker bio, credentials, course relevance, CPD wording..."></textarea>
+            </div>
+            <div class="field-full">
+              <label for="admin-notes">Admin notes for Sarah-Jane/Michael</label>
+              <textarea id="admin-notes" placeholder="What needs built, changed, checked, or uploaded?"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Need an email nudge or update?</h2>
+          <p class="muted">Use the action request board to ask for an email reminder, website update, social post, booking link change, or decision.</p>
+          <div class="buttons">
+            <a class="button primary" href="action-requests.html?area=Prescription-only%20Medication%20CPD&requester=Laura%20Jane">Request action</a>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Drop files here</h2>
+          <div id="dropzone" class="dropzone">
+            <strong>Drag photos, speaker profiles, posters, dates, or documents here</strong>
+            <p class="muted">Files will be listed below and included in the manifest.</p>
+            <input id="file-input" type="file" multiple hidden>
+            <div class="buttons">
+              <button class="primary" type="button" id="choose-files">Choose files</button>
+              <button type="button" id="clear-files">Clear files</button>
+            </div>
+          </div>
+
+          <ul id="file-list" class="file-list"></ul>
+          <div id="preview" class="preview"></div>
+        </section>
+
+        <section class="card">
+          <h2>Save or export</h2>
+          <p class="muted">Use this to create a record of what Laura Jane has supplied.</p>
+          <div class="buttons">
+            <button class="primary" type="button" id="save-folder">Save to chosen folder</button>
+            <button type="button" id="download-manifest">Download manifest</button>
+            <button type="button" id="copy-summary">Copy summary</button>
+          </div>
+          <p id="status" class="muted" role="status" style="margin-top: 12px;"></p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const selectedFiles = [];
+    const dropzone = document.getElementById("dropzone");
+    const fileInput = document.getElementById("file-input");
+    const fileList = document.getElementById("file-list");
+    const preview = document.getElementById("preview");
+    const statusEl = document.getElementById("status");
+    const fields = ["session-title", "session-owner", "speaker", "format", "dates", "time", "booking-link", "summary", "speaker-profile", "admin-notes"];
+
+    function safeName(name) {
+      return name.toLowerCase().replace(/[^a-z0-9._-]+/g, "-").replace(/-+/g, "-").replace(/^-|-$/g, "");
+    }
+
+    function getFormData() {
+      const data = {};
+      fields.forEach((id) => {
+        data[id] = document.getElementById(id).value.trim();
+      });
+      data.generatedAt = new Date().toISOString();
+      data.files = selectedFiles.map((file) => ({
+        originalName: file.name,
+        savedName: safeName(file.name),
+        type: file.type || "unknown",
+        size: file.size
+      }));
+      data.sourceNotes = {
+        publicPage: "https://glasgowrcop.org/poms",
+        currentAsset: "prescription-medications-assets/poms-current.png",
+        bookingLinkFound: "https://form.jotform.com/261013057385351"
+      };
+      return data;
+    }
+
+    function renderFiles() {
+      fileList.innerHTML = "";
+      preview.innerHTML = "";
+      selectedFiles.forEach((file) => {
+        const li = document.createElement("li");
+        li.innerHTML = `<span>${file.name}</span><span>${Math.round(file.size / 1024)} KB</span>`;
+        fileList.appendChild(li);
+        if (file.type.startsWith("image/")) {
+          const img = document.createElement("img");
+          img.src = URL.createObjectURL(file);
+          img.alt = file.name;
+          preview.appendChild(img);
+        }
+      });
+      statusEl.textContent = selectedFiles.length ? `${selectedFiles.length} file(s) ready.` : "No files selected yet.";
+    }
+
+    function addFiles(files) {
+      Array.from(files).forEach((file) => selectedFiles.push(file));
+      renderFiles();
+    }
+
+    function downloadText(filename, text) {
+      const blob = new Blob([text], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    document.getElementById("choose-files").addEventListener("click", () => fileInput.click());
+    document.getElementById("clear-files").addEventListener("click", () => {
+      selectedFiles.length = 0;
+      fileInput.value = "";
+      renderFiles();
+    });
+    fileInput.addEventListener("change", (event) => addFiles(event.target.files));
+
+    ["dragenter", "dragover"].forEach((eventName) => {
+      dropzone.addEventListener(eventName, (event) => {
+        event.preventDefault();
+        dropzone.classList.add("dragging");
+      });
+    });
+    ["dragleave", "drop"].forEach((eventName) => {
+      dropzone.addEventListener(eventName, (event) => {
+        event.preventDefault();
+        dropzone.classList.remove("dragging");
+      });
+    });
+    dropzone.addEventListener("drop", (event) => addFiles(event.dataTransfer.files));
+
+    document.getElementById("download-manifest").addEventListener("click", () => {
+      downloadText("prescription-medications-intake-manifest.json", JSON.stringify(getFormData(), null, 2));
+      statusEl.textContent = "Manifest downloaded.";
+    });
+
+    document.getElementById("copy-summary").addEventListener("click", async () => {
+      const data = getFormData();
+      const summary = [
+        `Course: ${data["session-title"]}`,
+        `Lead/contact: ${data["session-owner"]}`,
+        `Speaker: ${data.speaker}`,
+        `Format/location: ${data.format}`,
+        `Dates: ${data.dates}`,
+        `Time: ${data.time}`,
+        `Booking/event link: ${data["booking-link"]}`,
+        "",
+        "Summary:",
+        data.summary,
+        "",
+        "Speaker/profile notes:",
+        data["speaker-profile"],
+        "",
+        "Admin notes:",
+        data["admin-notes"],
+        "",
+        "Files:",
+        ...data.files.map((file) => `- ${file.originalName} -> ${file.savedName}`)
+      ].join("\n");
+      await navigator.clipboard.writeText(summary);
+      statusEl.textContent = "Summary copied.";
+    });
+
+    document.getElementById("save-folder").addEventListener("click", async () => {
+      if (!("showDirectoryPicker" in window)) {
+        statusEl.textContent = "Folder saving is not supported in this browser. Download the manifest instead.";
+        return;
+      }
+      try {
+        const root = await window.showDirectoryPicker();
+        const folder = await root.getDirectoryHandle("prescription-medications-assets", { create: true });
+        const intakeFolder = await folder.getDirectoryHandle(`intake-${new Date().toISOString().slice(0, 10)}`, { create: true });
+        const data = getFormData();
+        const manifestHandle = await intakeFolder.getFileHandle("manifest.json", { create: true });
+        const manifestWritable = await manifestHandle.createWritable();
+        await manifestWritable.write(JSON.stringify(data, null, 2));
+        await manifestWritable.close();
+        for (const file of selectedFiles) {
+          const handle = await intakeFolder.getFileHandle(safeName(file.name), { create: true });
+          const writable = await handle.createWritable();
+          await writable.write(file);
+          await writable.close();
+        }
+        statusEl.textContent = "Saved to selected folder.";
+      } catch (error) {
+        statusEl.textContent = `Save cancelled or failed: ${error.message}`;
+      }
+    });
+
+    renderFiles();
+  </script>
+</body>
+</html>

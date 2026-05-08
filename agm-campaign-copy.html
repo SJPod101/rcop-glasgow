@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AGM Campaign Copy | Don't See</title>
+  <style>
+    :root {
+      --ink: #111827;
+      --muted: #5d6878;
+      --line: #d9dee7;
+      --paper: #f5f8f7;
+      --white: #ffffff;
+      --green: #017d65;
+      --green-dark: #004b43;
+      --red: #c73535;
+      --blue: #1f4d7a;
+      --amber: #b76b00;
+      --shadow: 0 18px 44px rgba(17, 24, 39, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    a {
+      color: var(--green-dark);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(0, 75, 67, 0.96);
+      color: var(--white);
+      box-shadow: 0 10px 28px rgba(0, 3, 33, 0.18);
+      backdrop-filter: blur(12px);
+    }
+
+    .top {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .top strong,
+    .top span { display: block; }
+
+    .top span {
+      margin-top: 2px;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 13px;
+    }
+
+    .top nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .top a { color: rgba(255, 255, 255, 0.92); }
+
+    .hero {
+      color: var(--white);
+      background:
+        linear-gradient(110deg, rgba(0, 3, 33, 0.82), rgba(0, 75, 67, 0.86)),
+        url("thousand-small-steps-assets/branch-community-06-conference-audience.jpg") center / cover no-repeat;
+    }
+
+    .hero-inner {
+      padding: 64px 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+      gap: 34px;
+      align-items: center;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      margin-bottom: 14px;
+      font-size: clamp(42px, 6vw, 82px);
+      line-height: 0.98;
+    }
+
+    .hero p {
+      max-width: 780px;
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .hero-card {
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 8px;
+      padding: 22px;
+      background: rgba(255, 255, 255, 0.14);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-card h2 {
+      margin-bottom: 8px;
+      font-size: 22px;
+    }
+
+    main { padding: 30px 0 52px; }
+
+    .jump {
+      position: sticky;
+      top: 70px;
+      z-index: 9;
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 10px;
+      overflow-x: auto;
+      margin: -30px 0 24px;
+      padding: 14px 0;
+      background: rgba(245, 248, 247, 0.96);
+      box-shadow: 0 12px 22px rgba(17, 24, 39, 0.08);
+      backdrop-filter: blur(12px);
+      scrollbar-width: thin;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      color: var(--green-dark);
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: 0 8px 18px rgba(17, 24, 39, 0.05);
+    }
+
+    .button.primary {
+      border-color: var(--green);
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .section {
+      margin-top: 26px;
+      scroll-margin-top: 150px;
+    }
+
+    .section-head {
+      margin-bottom: 16px;
+    }
+
+    .section-head h2 {
+      margin-bottom: 6px;
+      font-size: 32px;
+      line-height: 1.15;
+    }
+
+    .section-head p {
+      max-width: 760px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card,
+    .copy-block {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .card h3,
+    .copy-block h3 {
+      margin-bottom: 10px;
+      font-size: 21px;
+    }
+
+    .card p,
+    .copy-block p,
+    .list {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .list {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .list li + li { margin-top: 7px; }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .ready { color: var(--green-dark); background: #e7f5f1; }
+    .waiting { color: var(--amber); background: #fff3df; }
+    .draft { color: var(--blue); background: #e8f0f8; }
+
+    .highlight {
+      border-left: 5px solid var(--red);
+      background: #fff8f8;
+    }
+
+    .copy-block {
+      margin-top: 14px;
+      white-space: normal;
+    }
+
+    .copy-block strong {
+      color: var(--ink);
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .top,
+      .hero-inner { display: block; }
+      .top { padding: 14px 0; }
+      .top nav { justify-content: flex-start; margin-top: 12px; }
+      .hero-card { margin-top: 24px; }
+      .grid,
+      .two { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="shell top">
+      <div>
+        <strong>RCoP Glasgow Branch</strong>
+        <span>AGM campaign copy</span>
+      </div>
+      <nav aria-label="Page navigation">
+        <a href="RCOP-live-project-dashboard.html">Dashboard</a>
+        <a href="branch-notes.html#agm">AGM notes</a>
+        <a href="assets-index.html">Assets</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="shell hero-inner">
+      <div>
+        <h1>AGM 2026: Your Vote Matters</h1>
+        <p>Two member-led motions are expected at the 2026 Royal College of Podiatry AGM. Both are about strengthening member voice, local value, and democratic accountability.</p>
+      </div>
+      <aside class="hero-card">
+        <h2>Page Status</h2>
+        <p>Draft copy for page build. Formal AGM documentation is expected on 11 May 2026. Proxy guidance should be added only once official arrangements are confirmed.</p>
+      </aside>
+    </div>
+  </section>
+
+  <main class="shell">
+    <nav class="jump" aria-label="Jump to copy section">
+      <a class="button primary" href="#overview">Overview</a>
+      <a class="button" href="#branch-fund">Branch Fund</a>
+      <a class="button" href="#consultation">Consultation</a>
+      <a class="button" href="#stay-ready">Stay Ready</a>
+      <a class="button" href="#proxy">Proxy</a>
+      <a class="button" href="#form">Update Form</a>
+      <a class="button" href="#social">Social Posts</a>
+      <a class="button" href="#email">Email</a>
+      <a class="button" href="#source">Source</a>
+    </nav>
+
+    <section class="section" id="overview">
+      <div class="section-head">
+        <h2>Campaign Overview</h2>
+        <p>This should be built as one AGM campaign hub with two clear vote YES sections and one simple update form.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <span class="status ready">Core message</span>
+          <h3>Vote YES</h3>
+          <p>Vote YES to support sustainable branch funding. Vote YES to support proper member consultation.</p>
+        </article>
+        <article class="card">
+          <span class="status waiting">Proxy details pending</span>
+          <h3>Voting Note</h3>
+          <p>Most members are unlikely to attend in person on 6 June 2026, so proxy participation may be important.</p>
+        </article>
+        <article class="card">
+          <span class="status draft">CTA</span>
+          <h3>Primary Action</h3>
+          <p>Register for AGM updates. Secondary action: read about the motions.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="branch-fund">
+      <div class="section-head">
+        <h2>Motion One: Help Branches Grow Again</h2>
+        <p>Vote YES for the Branch Activity Fund Resolution.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <span class="status ready">2% fund</span>
+          <h3>The Proposal</h3>
+          <p>Create a sustainable funding framework by ring-fencing a minimum of 2% of annual membership subscription income for branch-led initiatives.</p>
+        </article>
+        <article class="card">
+          <span class="status ready">Local value</span>
+          <h3>Could Support</h3>
+          <ul class="list">
+            <li>Subsidised local CPD</li>
+            <li>Student engagement</li>
+            <li>Mentorship programmes</li>
+            <li>Public awareness campaigns</li>
+            <li>Networking and outreach</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="status ready">Democratic</span>
+          <h3>Oversight</h3>
+          <p>Strategic priorities would be determined democratically by Branch Chairs through the existing Regional Branch Committee structure.</p>
+        </article>
+      </div>
+      <article class="copy-block highlight">
+        <h3>Page Copy</h3>
+        <p><strong>Vote YES to Help Branches Grow Again.</strong></p>
+        <p>Local branches are where many members experience the practical value of professional community: CPD, mentoring, networking, student support, outreach, and peer connection.</p>
+        <p>The Branch Activity Fund would help branches plan with confidence and reinvest member subscriptions into visible local value.</p>
+      </article>
+    </section>
+
+    <section class="section" id="consultation">
+      <div class="section-head">
+        <h2>Motion Two: Member Consultation</h2>
+        <p>Vote YES for proper member consultation on The Podiatrist.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <span class="status ready">Member voice</span>
+          <h3>The Issue</h3>
+          <p>This concerns the decision to move The Podiatrist to virtual-only without first consulting members.</p>
+        </article>
+        <article class="card">
+          <span class="status ready">Balanced</span>
+          <h3>Positioning</h3>
+          <p>The issue is not whether digital communication has value. The point is that major changes should involve proper consultation.</p>
+        </article>
+        <article class="card">
+          <span class="status ready">CTA</span>
+          <h3>Ask</h3>
+          <p>Vote YES to support proper member consultation.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="stay-ready">
+      <div class="section-head">
+        <h2>How Members Can Stay Ready</h2>
+        <p>Use this before formal voting/proxy instructions are available.</p>
+      </div>
+      <article class="card">
+        <ul class="list">
+          <li>Make sure the branch has your correct contact details.</li>
+          <li>Watch for AGM documentation from the College.</li>
+          <li>Register for Glasgow Branch updates.</li>
+          <li>Encourage colleagues to read the motions.</li>
+          <li>Be ready to vote YES once the formal process opens.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="section" id="proxy">
+      <div class="section-head">
+        <h2>Proxy Voting Copy</h2>
+        <p>Keep this cautious until official 2026 AGM guidance is confirmed.</p>
+      </div>
+      <article class="copy-block">
+        <p>Every Voting Member has a constitutional right to appoint a proxy to vote on their behalf.</p>
+        <p>Final operational guidance for the 2026 AGM is still awaited.</p>
+        <p>Once the official process is confirmed, this page will be updated with clear next steps.</p>
+      </article>
+    </section>
+
+    <section class="section" id="form">
+      <div class="section-head">
+        <h2>Update Form Copy</h2>
+        <p>Use this for a safe interim form before proxy details are confirmed.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <span class="status draft">Heading</span>
+          <h3>Stay updated on AGM voting and proxy guidance</h3>
+          <p>Register your interest and the Glasgow Branch team will send updates when official AGM documentation and proxy guidance are published.</p>
+        </article>
+        <article class="card">
+          <span class="status draft">Fields</span>
+          <ul class="list">
+            <li>Name</li>
+            <li>Email</li>
+            <li>Branch or region</li>
+            <li>Interested in voting YES for Branch Activity Fund?</li>
+            <li>Interested in voting YES for member consultation?</li>
+            <li>Would you like proxy guidance once confirmed?</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="status ready">Confirmation</span>
+          <h3>Thank You</h3>
+          <p>Thank you. We will keep you updated as AGM guidance is confirmed.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="social">
+      <div class="section-head">
+        <h2>Social Post Copy</h2>
+        <p>Short, positive posts for Facebook or branch updates.</p>
+      </div>
+      <div class="grid">
+        <article class="copy-block">
+          <h3>General AGM Awareness</h3>
+          <p><strong>AGM 2026: YOUR VOTE MATTERS</strong></p>
+          <p>Two member-led motions are expected at the 2026 Royal College of Podiatry AGM.</p>
+          <p>One focuses on sustainable branch funding. One focuses on proper member consultation.</p>
+          <p>Stay informed. Be ready to vote YES.</p>
+        </article>
+        <article class="copy-block">
+          <h3>Branch Funding</h3>
+          <p><strong>HELP BRANCHES GROW AGAIN</strong></p>
+          <p>Local CPD. Local mentorship. Local engagement.</p>
+          <p>The proposed Branch Activity Fund would ring-fence a minimum of 2% of subscription income for branch-led initiatives.</p>
+          <p>Vote YES to Help Branches Grow Again.</p>
+        </article>
+        <article class="copy-block">
+          <h3>Member Consultation</h3>
+          <p><strong>MEMBER VOICE MATTERS</strong></p>
+          <p>Major changes to how members receive a core College publication should involve proper consultation.</p>
+          <p>Vote YES for proper member consultation.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="email">
+      <div class="section-head">
+        <h2>Member Email Copy</h2>
+        <p>Draft email for members once ready to send.</p>
+      </div>
+      <article class="copy-block">
+        <h3>Subject: AGM 2026: Your Vote Matters</h3>
+        <p>Dear Member,</p>
+        <p>The 2026 Royal College of Podiatry AGM takes place on <strong>6 June 2026</strong>.</p>
+        <p>Two member-led motions are expected to be considered at the AGM.</p>
+        <p>The first is the Branch Activity Fund Resolution. This proposal would ring-fence a minimum of 2% of annual membership subscription income for branch-led initiatives, helping to support local CPD, mentorship, student engagement, outreach, and networking.</p>
+        <p>The second relates to member consultation on the move to make The Podiatrist virtual-only. This motion is about ensuring members are properly consulted on significant changes to how they receive core College publications.</p>
+        <p>Both motions are about strengthening member voice, local value, and democratic accountability.</p>
+        <p>Formal AGM documentation is expected on <strong>11 May 2026</strong>. At present, final clarification regarding proxy arrangements and timelines is still awaited.</p>
+        <p>We will share further updates as soon as official guidance is available.</p>
+        <p>In the meantime, please stay informed and be ready to participate.</p>
+        <p>Kind regards,<br>Royal College of Podiatry Glasgow Branch</p>
+      </article>
+    </section>
+
+    <section class="section" id="source">
+      <div class="section-head">
+        <h2>Source Files</h2>
+        <p>Raw source files are here for editing/reference. The page above is the version to share with people.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <h3>AGM Website Copy</h3>
+          <p>Original Markdown source.</p>
+          <div class="links">
+            <a class="button" href="AGM-2026-website-copy.md">Open raw source</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3>HBGA Briefing Pack</h3>
+          <p>Branch Chair briefing pack for Help Branches Grow Again.</p>
+          <div class="links">
+            <a class="button" href="HBGA-branch-chair-briefing-pack.md">Open raw source</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Branch Notes</h3>
+          <p>Return to the wider branch notes page.</p>
+          <div class="links">
+            <a class="button primary" href="branch-notes.html#agm">Open AGM notes</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

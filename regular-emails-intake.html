@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Regular Emails Intake | RCoP Glasgow Branch</title>
+  <style>
+    :root {
+      --ink: #111827;
+      --muted: #5d6878;
+      --line: #d9dee7;
+      --paper: #f6f8fb;
+      --white: #ffffff;
+      --green: #017d65;
+      --green-dark: #004b43;
+      --blue: #1f4d7a;
+      --amber: #b76b00;
+      --coral: #ff7e84;
+      --shadow: 0 18px 44px rgba(17, 24, 39, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    a {
+      color: var(--green-dark);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .shell {
+      width: min(1140px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    header {
+      background: var(--green-dark);
+      color: var(--white);
+    }
+
+    .top {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .top strong,
+    .top span { display: block; }
+
+    .top span {
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 13px;
+      margin-top: 2px;
+    }
+
+    .top a {
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 14px;
+    }
+
+    .hero {
+      background: linear-gradient(115deg, var(--green-dark), var(--green));
+      color: var(--white);
+    }
+
+    .hero-inner {
+      padding: 48px 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+      gap: 28px;
+      align-items: center;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      max-width: 780px;
+      margin-bottom: 14px;
+      font-size: clamp(34px, 5vw, 62px);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      max-width: 740px;
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .hero-card,
+    .card,
+    .note {
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      padding: 18px;
+      background: rgba(0, 31, 28, 0.52);
+    }
+
+    main { padding: 34px 0 46px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .card,
+    .note {
+      border: 1px solid var(--line);
+      background: var(--white);
+      padding: 20px;
+    }
+
+    .card + .card,
+    .note { margin-top: 18px; }
+
+    .card h2 {
+      margin-bottom: 10px;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .draft {
+      color: var(--blue);
+      background: #e8f0f8;
+    }
+
+    .waiting {
+      color: var(--amber);
+      background: #fff3df;
+    }
+
+    .fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .field-full { grid-column: 1 / -1; }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      color: #273244;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 11px 12px;
+      color: var(--ink);
+      background: var(--white);
+      font: inherit;
+      font-size: 14px;
+    }
+
+    textarea {
+      min-height: 98px;
+      resize: vertical;
+    }
+
+    .dropzone {
+      border: 2px dashed #9cb5ad;
+      border-radius: 8px;
+      padding: 28px;
+      background: #f2fbf8;
+      text-align: center;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .dropzone.dragging {
+      border-color: var(--green);
+      background: #e0f5ee;
+    }
+
+    .dropzone strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    button,
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      color: var(--green-dark);
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    button.primary,
+    .button.primary {
+      border-color: var(--green);
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .file-list {
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .file-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .preview {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .preview img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #eef2f6;
+    }
+
+    .note {
+      border-left: 5px solid var(--coral);
+    }
+
+    @media (max-width: 900px) {
+      .top,
+      .hero-inner,
+      .grid,
+      .fields { display: block; }
+
+      .top nav,
+      .hero-card,
+      .grid > * + *,
+      .fields > * + * { margin-top: 16px; }
+
+      .preview { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="shell top">
+      <div>
+        <strong>Regular Emails Intake</strong>
+        <span>Royal College of Podiatry Glasgow Branch</span>
+      </div>
+      <nav>
+        <a href="RCOP-live-project-dashboard.html">Back to project dashboard</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="shell hero-inner">
+      <div>
+        <h1>Regular Emails / Member Comms</h1>
+        <p>A shared intake area where branch committee members can drop resources, assets, notes, dates and ideas for future member emails.</p>
+      </div>
+      <aside class="hero-card">
+        <h2>Make integration</h2>
+        <p>This is prepared for Make.com handoff. Private keys should be stored outside this shared page, not pasted into the HTML.</p>
+      </aside>
+    </div>
+  </section>
+
+  <main class="shell">
+    <div class="grid">
+      <div>
+        <section class="card">
+          <span class="status draft">Email pipeline</span>
+          <h2>Purpose</h2>
+          <p class="muted">Use this page to collect raw information before it becomes a member email, Facebook post, website update, or Make automation payload.</p>
+          <ul class="muted">
+            <li>Committee members add notes, dates, links and attachments.</li>
+            <li>Sarah-Jane can package the information for email or Make.</li>
+            <li>Files can be saved locally or uploaded into Google Drive.</li>
+            <li>The exported manifest keeps a clear record of what was supplied.</li>
+          </ul>
+        </section>
+
+        <section class="note">
+          <h2>Private key note</h2>
+          <p class="muted">When you send the Make Location ID and private integration keys, they should go into a private local config or environment file, not into this visible dashboard. I have added `.env.example` and `.gitignore` so secrets are kept out of shared files.</p>
+        </section>
+
+        <section class="card">
+          <span class="status waiting">Make details pending</span>
+          <h2>Integration fields needed</h2>
+          <p class="muted">To wire this into Make later, we will need the correct destination details.</p>
+          <ul class="muted">
+            <li>Location ID</li>
+            <li>Make webhook URL or scenario endpoint</li>
+            <li>Private integration key, stored securely</li>
+            <li>Target destination: draft email, Google Drive folder, CRM contact segment, or task queue</li>
+          </ul>
+        </section>
+      </div>
+
+      <div>
+        <section class="card">
+          <span class="status draft">Committee intake area</span>
+          <h2>Add email request</h2>
+          <div class="fields">
+            <div>
+              <label for="request-title">Email/topic title</label>
+              <input id="request-title" placeholder="e.g. June CPD reminder">
+            </div>
+            <div>
+              <label for="submitted-by">Submitted by</label>
+              <input id="submitted-by" placeholder="Committee member name">
+            </div>
+            <div>
+              <label for="priority">Priority</label>
+              <select id="priority">
+                <option>Normal</option>
+                <option>Urgent</option>
+                <option>Low</option>
+              </select>
+            </div>
+            <div>
+              <label for="send-window">Preferred send window</label>
+              <input id="send-window" placeholder="e.g. next Monday, before AGM, this week">
+            </div>
+            <div>
+              <label for="audience">Audience</label>
+              <input id="audience" placeholder="Members, students, branch chairs, attendees...">
+            </div>
+            <div>
+              <label for="cta">Main call to action</label>
+              <input id="cta" placeholder="Book, register, read, vote, reply...">
+            </div>
+            <div class="field-full">
+              <label for="key-message">Key message</label>
+              <textarea id="key-message" placeholder="What needs to be said?"></textarea>
+            </div>
+            <div class="field-full">
+              <label for="links">Links to include</label>
+              <textarea id="links" placeholder="Booking links, web pages, Google Drive folders, Facebook events..."></textarea>
+            </div>
+            <div class="field-full">
+              <label for="notes">Extra notes</label>
+              <textarea id="notes" placeholder="Anything Sarah-Jane/Michael should know before drafting or sending?"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Drop resources and assets</h2>
+          <div id="dropzone" class="dropzone">
+            <strong>Drag images, PDFs, docs, screenshots, CSVs or notes here</strong>
+            <p class="muted">Files will be listed below and included in the export manifest.</p>
+            <input id="file-input" type="file" multiple hidden>
+            <div class="buttons">
+              <button class="primary" type="button" id="choose-files">Choose files</button>
+              <button type="button" id="clear-files">Clear files</button>
+            </div>
+          </div>
+
+          <ul id="file-list" class="file-list"></ul>
+          <div id="preview" class="preview"></div>
+        </section>
+
+        <section class="card">
+          <h2>Save or export</h2>
+          <p class="muted">Export a clean payload for Make/Google Drive or save into a chosen local folder where supported.</p>
+          <div class="buttons">
+            <button class="primary" type="button" id="save-folder">Save to chosen folder</button>
+            <button type="button" id="download-manifest">Download Make-ready manifest</button>
+            <button type="button" id="copy-summary">Copy email brief</button>
+          </div>
+          <p id="status" class="muted" role="status" style="margin-top: 12px;"></p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const selectedFiles = [];
+    const dropzone = document.getElementById("dropzone");
+    const fileInput = document.getElementById("file-input");
+    const fileList = document.getElementById("file-list");
+    const preview = document.getElementById("preview");
+    const statusEl = document.getElementById("status");
+    const fields = ["request-title", "submitted-by", "priority", "send-window", "audience", "cta", "key-message", "links", "notes"];
+
+    function safeName(name) {
+      return name.toLowerCase().replace(/[^a-z0-9._-]+/g, "-").replace(/-+/g, "-").replace(/^-|-$/g, "");
+    }
+
+    function getFormData() {
+      const data = {};
+      fields.forEach((id) => {
+        data[id] = document.getElementById(id).value.trim();
+      });
+      data.generatedAt = new Date().toISOString();
+      data.source = "regular-emails-intake.html";
+      data.makeStatus = "ready_for_manual_or_secure_server_side_handoff";
+      data.files = selectedFiles.map((file) => ({
+        originalName: file.name,
+        savedName: safeName(file.name),
+        type: file.type || "unknown",
+        size: file.size
+      }));
+      return data;
+    }
+
+    function renderFiles() {
+      fileList.innerHTML = "";
+      preview.innerHTML = "";
+      selectedFiles.forEach((file) => {
+        const li = document.createElement("li");
+        li.innerHTML = `<span>${file.name}</span><span>${Math.round(file.size / 1024)} KB</span>`;
+        fileList.appendChild(li);
+        if (file.type.startsWith("image/")) {
+          const img = document.createElement("img");
+          img.src = URL.createObjectURL(file);
+          img.alt = file.name;
+          preview.appendChild(img);
+        }
+      });
+      statusEl.textContent = selectedFiles.length ? `${selectedFiles.length} file(s) ready.` : "No files selected yet.";
+    }
+
+    function addFiles(files) {
+      Array.from(files).forEach((file) => selectedFiles.push(file));
+      renderFiles();
+    }
+
+    function downloadText(filename, text) {
+      const blob = new Blob([text], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    document.getElementById("choose-files").addEventListener("click", () => fileInput.click());
+    document.getElementById("clear-files").addEventListener("click", () => {
+      selectedFiles.length = 0;
+      fileInput.value = "";
+      renderFiles();
+    });
+    fileInput.addEventListener("change", (event) => addFiles(event.target.files));
+
+    ["dragenter", "dragover"].forEach((eventName) => {
+      dropzone.addEventListener(eventName, (event) => {
+        event.preventDefault();
+        dropzone.classList.add("dragging");
+      });
+    });
+    ["dragleave", "drop"].forEach((eventName) => {
+      dropzone.addEventListener(eventName, (event) => {
+        event.preventDefault();
+        dropzone.classList.remove("dragging");
+      });
+    });
+    dropzone.addEventListener("drop", (event) => addFiles(event.dataTransfer.files));
+
+    document.getElementById("download-manifest").addEventListener("click", () => {
+      downloadText("regular-email-intake-manifest.json", JSON.stringify(getFormData(), null, 2));
+      statusEl.textContent = "Manifest downloaded.";
+    });
+
+    document.getElementById("copy-summary").addEventListener("click", async () => {
+      const data = getFormData();
+      const summary = [
+        `Email/topic: ${data["request-title"]}`,
+        `Submitted by: ${data["submitted-by"]}`,
+        `Priority: ${data.priority}`,
+        `Preferred send window: ${data["send-window"]}`,
+        `Audience: ${data.audience}`,
+        `Main CTA: ${data.cta}`,
+        "",
+        "Key message:",
+        data["key-message"],
+        "",
+        "Links:",
+        data.links,
+        "",
+        "Extra notes:",
+        data.notes,
+        "",
+        "Files:",
+        ...data.files.map((file) => `- ${file.originalName} -> ${file.savedName}`)
+      ].join("\n");
+      await navigator.clipboard.writeText(summary);
+      statusEl.textContent = "Email brief copied.";
+    });
+
+    document.getElementById("save-folder").addEventListener("click", async () => {
+      if (!("showDirectoryPicker" in window)) {
+        statusEl.textContent = "Folder saving is not supported in this browser. Download the manifest instead.";
+        return;
+      }
+      try {
+        const root = await window.showDirectoryPicker();
+        const folder = await root.getDirectoryHandle("email-intake-assets", { create: true });
+        const intakeFolder = await folder.getDirectoryHandle(`intake-${new Date().toISOString().slice(0, 10)}`, { create: true });
+        const data = getFormData();
+        const manifestHandle = await intakeFolder.getFileHandle("manifest.json", { create: true });
+        const manifestWritable = await manifestHandle.createWritable();
+        await manifestWritable.write(JSON.stringify(data, null, 2));
+        await manifestWritable.close();
+        for (const file of selectedFiles) {
+          const handle = await intakeFolder.getFileHandle(safeName(file.name), { create: true });
+          const writable = await handle.createWritable();
+          await writable.write(file);
+          await writable.close();
+        }
+        statusEl.textContent = "Saved to selected folder.";
+      } catch (error) {
+        statusEl.textContent = `Save cancelled or failed: ${error.message}`;
+      }
+    });
+
+    renderFiles();
+  </script>
+</body>
+</html>

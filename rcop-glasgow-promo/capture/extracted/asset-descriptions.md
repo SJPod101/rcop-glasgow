@@ -1,0 +1,46 @@
+# Asset Descriptions
+
+One line per file. Read this instead of opening every image individually.
+
+- favicon.ico — 0KB, favicon
+- flags-2x.png — 162KB, flags 2x
+- flags.png — 66KB, flags
+- image-0.png — 258KB, image 0
+- image-1.png — 52KB, image 1
+- image-2.png — 155KB, image 2
+- image-3.png — 38KB, image 3
+- image-4.png — 31KB, image 4
+- image-5.png — 25KB, image 5
+- image-6.png — 10KB, image 6
+- image-7.png — 60KB, image 7
+- image-8.png — 83KB, image 8
+- fonts/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq3p6WXh0ow.ttf — font file
+- fonts/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq5Z9WXh0ow.ttf — font file
+- fonts/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq6R8WXh0ow.ttf — font file
+- fonts/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq6R9WXh0ow.ttf — font file
+- fonts/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq_p9WXh0ow.ttf — font file
+- fonts/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jqyR9WXh0ow.ttf — font file
+- fonts/S6u-w4BMUTPHjxsIPx-oPCc.ttf — font file
+- fonts/S6u8w4BMUTPHh30AXC-v.ttf — font file
+- fonts/S6u8w4BMUTPHjxsAXC-v.ttf — font file
+- fonts/S6u_w4BMUTPHjxsI3wi_Gwfo.ttf — font file
+- fonts/S6u_w4BMUTPHjxsI5wq_Gwfo.ttf — font file
+- fonts/S6u_w4BMUTPHjxsI9w2_Gwfo.ttf — font file
+- fonts/memQYaGs126MiZpBA-UFUIcVXSCEkx2cmqvXlWq8tWZ0Pw86hd0Rk0ZjWVAexQ.ttf — font file
+- fonts/memQYaGs126MiZpBA-UFUIcVXSCEkx2cmqvXlWq8tWZ0Pw86hd0Rk5hkWVAexQ.ttf — font file
+- fonts/memQYaGs126MiZpBA-UFUIcVXSCEkx2cmqvXlWq8tWZ0Pw86hd0Rk8ZkWVAexQ.ttf — font file
+- fonts/memQYaGs126MiZpBA-UFUIcVXSCEkx2cmqvXlWq8tWZ0Pw86hd0Rk_RkWVAexQ.ttf — font file
+- fonts/memQYaGs126MiZpBA-UFUIcVXSCEkx2cmqvXlWq8tWZ0Pw86hd0RkxhjWVAexQ.ttf — font file
+- fonts/memQYaGs126MiZpBA-UFUIcVXSCEkx2cmqvXlWq8tWZ0Pw86hd0RkyFjWVAexQ.ttf — font file
+- fonts/rP2rp2ywxg089UriCZaSExd86J3t9jz86Mvy4qCRAL19DksVat-7DV30TGI.ttf — font file
+- fonts/rP2rp2ywxg089UriCZaSExd86J3t9jz86Mvy4qCRAL19DksVat-JDF30TGI.ttf — font file
+- fonts/rP2rp2ywxg089UriCZaSExd86J3t9jz86Mvy4qCRAL19DksVat-JDV30TGI.ttf — font file
+- fonts/rP2rp2ywxg089UriCZaSExd86J3t9jz86Mvy4qCRAL19DksVat8JDV30TGI.ttf — font file
+- fonts/rP2rp2ywxg089UriCZaSExd86J3t9jz86Mvy4qCRAL19DksVat9XCl30TGI.ttf — font file
+- fonts/rP2rp2ywxg089UriCZaSExd86J3t9jz86Mvy4qCRAL19DksVat_XDV30TGI.ttf — font file
+- fonts/roboto-latin-400-normal.woff — font file
+- fonts/roboto-latin-400-normal.woff2 — font file
+- fonts/roboto-latin-700-normal.woff — font file
+- fonts/roboto-latin-700-normal.woff2 — font file
+- fonts/roboto-latin-ext-400-normal.woff — font file
+- fonts/roboto-latin-ext-400-normal.woff2 — font file

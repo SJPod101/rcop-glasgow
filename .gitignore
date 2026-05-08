@@ -1,0 +1,12 @@
+.env
+.env.*
+!.env.example
+private-config.json
+secrets.json
+.secrets/
+email-intake-assets/intake-*/
+back-to-basics-assets/intake-*/
+prescription-medications-assets/intake-*/
+
+# Local Netlify folder
+.netlify

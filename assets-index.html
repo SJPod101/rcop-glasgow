@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Assets Index | Don't See</title>
+  <style>
+    :root {
+      --ink: #111827;
+      --muted: #5d6878;
+      --line: #d9dee7;
+      --paper: #f6f8fb;
+      --white: #ffffff;
+      --green: #017d65;
+      --green-dark: #004b43;
+      --shadow: 0 18px 44px rgba(17, 24, 39, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    a {
+      color: var(--green-dark);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    header {
+      background: var(--green-dark);
+      color: var(--white);
+    }
+
+    .top {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .top strong,
+    .top span { display: block; }
+
+    .top span {
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 13px;
+      margin-top: 2px;
+    }
+
+    .top a { color: rgba(255, 255, 255, 0.92); }
+
+    .hero {
+      padding: 44px 0;
+      background: linear-gradient(115deg, var(--green-dark), var(--green));
+      color: var(--white);
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      margin-bottom: 12px;
+      font-size: clamp(34px, 5vw, 64px);
+      line-height: 1;
+    }
+
+    .hero p {
+      max-width: 780px;
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    main { padding: 30px 0 46px; }
+
+    .quick {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 10px;
+      overflow-x: auto;
+      margin: -30px 0 24px;
+      padding: 14px 0;
+      background: rgba(246, 248, 251, 0.96);
+      box-shadow: 0 12px 22px rgba(17, 24, 39, 0.08);
+      backdrop-filter: blur(12px);
+      scrollbar-width: thin;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      color: var(--green-dark);
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .button.primary {
+      border-color: var(--green);
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .upload-panel {
+      margin: 18px;
+      padding: 16px;
+      border: 2px dashed #9cb5ad;
+      border-radius: 8px;
+      background: #f2fbf8;
+    }
+
+    .upload-panel.dragging {
+      border-color: var(--green);
+      background: #e0f5ee;
+    }
+
+    .upload-panel h3 {
+      margin-bottom: 6px;
+      font-size: 17px;
+    }
+
+    .upload-panel p,
+    .upload-list {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .upload-actions,
+    .asset-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .upload-list {
+      margin-top: 10px;
+      padding-left: 18px;
+    }
+
+    section {
+      margin-top: 26px;
+      scroll-margin-top: 86px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .section-head {
+      padding: 20px;
+      border-bottom: 1px solid var(--line);
+      background: #f0f4f7;
+    }
+
+    .section-head h2 {
+      margin-bottom: 6px;
+      font-size: 24px;
+    }
+
+    .section-head p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 14px;
+      padding: 18px;
+    }
+
+    .asset {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--white);
+    }
+
+    .asset img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      display: block;
+      object-fit: cover;
+      background: #eef2f6;
+    }
+
+    .asset-body {
+      padding: 12px;
+    }
+
+    .asset-body h3 {
+      margin-bottom: 6px;
+      font-size: 14px;
+      line-height: 1.25;
+      word-break: break-word;
+    }
+
+    .asset-body p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 12px;
+      word-break: break-word;
+    }
+
+    .empty {
+      padding: 18px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 800px) {
+      .top { display: block; padding: 16px 0; }
+      .top nav { margin-top: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="shell top">
+      <div>
+        <strong>Don't See</strong>
+        <span>Assets index</span>
+      </div>
+      <nav>
+        <a href="RCOP-live-project-dashboard.html">Back to dashboard</a>
+        <span aria-hidden="true"> · </span>
+        <a href="branch-notes.html">Branch notes</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="shell">
+      <h1>Assets Index</h1>
+      <p>Use this page to view, download and add assets for each branch work area. Uploads are saved into the folder you choose, so pick the matching asset folder when prompted.</p>
+    </div>
+  </div>
+
+  <main class="shell">
+    <nav class="quick" aria-label="Asset sections">
+      <a class="button" href="#back-to-basics">Back to Basics</a>
+      <a class="button" href="#prescription-medications">Prescription-only Medication CPD</a>
+      <a class="button" href="#regular-emails">Regular Emails</a>
+      <a class="button" href="#small-steps">A Thousand Small Steps</a>
+      <a class="button" href="#conference">Scottish Conference 2026</a>
+      <a class="button" href="#homepage">Branch Homepage</a>
+      <a class="button primary" href="branch-notes.html">Notes</a>
+    </nav>
+
+    <section id="back-to-basics" data-folder="back-to-basics-assets">
+      <div class="section-head">
+        <h2>Back to Basics</h2>
+        <p>Assets collected for Anne Melville's Back to Basics area. <a href="branch-notes.html#back-to-basics">View notes</a>.</p>
+      </div>
+      <div class="grid">
+        <article class="asset">
+          <a href="back-to-basics-assets/back-to-basics-live.png"><img src="back-to-basics-assets/back-to-basics-live.png" alt="Back to Basics Live"></a>
+          <div class="asset-body">
+            <h3><a href="back-to-basics-assets/back-to-basics-live.png">back-to-basics-live.png</a></h3>
+            <p>Current Back to Basics graphic.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="prescription-medications" data-folder="prescription-medications-assets">
+      <div class="section-head">
+        <h2>Prescription-only Medication CPD</h2>
+        <p>Assets collected for Laura Jane's POM-S / medication CPD area. <a href="branch-notes.html#poms">View notes</a>.</p>
+      </div>
+      <div class="grid">
+        <article class="asset">
+          <a href="prescription-medications-assets/poms-current.png"><img src="prescription-medications-assets/poms-current.png" alt="POM-S current medication image"></a>
+          <div class="asset-body">
+            <h3><a href="prescription-medications-assets/poms-current.png">poms-current.png</a></h3>
+            <p>Current medication image from the POM-S page.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="regular-emails" data-folder="email-intake-assets">
+      <div class="section-head">
+        <h2>Regular Emails</h2>
+        <p>Assets dropped for member email ideas and updates. <a href="branch-notes.html#regular-emails">View notes</a>.</p>
+      </div>
+      <p class="empty">No visible email assets have been added yet. Use <a href="regular-emails-intake.html">Regular Emails Intake</a> to drop material.</p>
+    </section>
+
+    <section id="small-steps" data-folder="thousand-small-steps-assets">
+      <div class="section-head">
+        <h2>A Thousand Small Steps</h2>
+        <p>Assets for the public speaking and community outreach initiative. <a href="branch-notes.html#source-files">View notes</a>.</p>
+      </div>
+      <div class="grid">
+        <article class="asset"><a href="thousand-small-steps-assets/branch-group-web.jpg"><img src="thousand-small-steps-assets/branch-group-web.jpg" alt="Branch group"></a><div class="asset-body"><h3><a href="thousand-small-steps-assets/branch-group-web.jpg">branch-group-web.jpg</a></h3><p>Group/community image.</p></div></article>
+        <article class="asset"><a href="thousand-small-steps-assets/community-room-web.jpg"><img src="thousand-small-steps-assets/community-room-web.jpg" alt="Community room"></a><div class="asset-body"><h3><a href="thousand-small-steps-assets/community-room-web.jpg">community-room-web.jpg</a></h3><p>Community room image.</p></div></article>
+        <article class="asset"><a href="thousand-small-steps-assets/workshop-room-web.jpg"><img src="thousand-small-steps-assets/workshop-room-web.jpg" alt="Workshop room"></a><div class="asset-body"><h3><a href="thousand-small-steps-assets/workshop-room-web.jpg">workshop-room-web.jpg</a></h3><p>Workshop room image.</p></div></article>
+        <article class="asset"><a href="thousand-small-steps-assets/dave-james-speaker-coach.jpg"><img src="thousand-small-steps-assets/dave-james-speaker-coach.jpg" alt="Dave James"></a><div class="asset-body"><h3><a href="thousand-small-steps-assets/dave-james-speaker-coach.jpg">dave-james-speaker-coach.jpg</a></h3><p>Speaker/facilitator image.</p></div></article>
+        <article class="asset"><a href="thousand-small-steps-assets/jill-woods-practice-momentum.jpg"><img src="thousand-small-steps-assets/jill-woods-practice-momentum.jpg" alt="Jill Woods"></a><div class="asset-body"><h3><a href="thousand-small-steps-assets/jill-woods-practice-momentum.jpg">jill-woods-practice-momentum.jpg</a></h3><p>Practice mentor image.</p></div></article>
+        <article class="asset"><a href="thousand-small-steps-assets/concept.png"><img src="thousand-small-steps-assets/concept.png" alt="Concept"></a><div class="asset-body"><h3><a href="thousand-small-steps-assets/concept.png">concept.png</a></h3><p>Concept asset.</p></div></article>
+        <article class="asset"><a href="thousand-small-steps-assets/rcop-glasgow-logo.png"><img src="thousand-small-steps-assets/rcop-glasgow-logo.png" alt="RCoP Glasgow logo"></a><div class="asset-body"><h3><a href="thousand-small-steps-assets/rcop-glasgow-logo.png">rcop-glasgow-logo.png</a></h3><p>Logo asset.</p></div></article>
+        <article class="asset"><a href="thousand-small-steps-assets/rcop-glasgow-logo-transparent.png"><img src="thousand-small-steps-assets/rcop-glasgow-logo-transparent.png" alt="RCoP Glasgow transparent logo"></a><div class="asset-body"><h3><a href="thousand-small-steps-assets/rcop-glasgow-logo-transparent.png">rcop-glasgow-logo-transparent.png</a></h3><p>Transparent logo.</p></div></article>
+      </div>
+    </section>
+
+    <section id="conference" data-folder="rcop-glasgow-promo/assets">
+      <div class="section-head">
+        <h2>Scottish Conference 2026</h2>
+        <p>Speaker, agenda, stock and audio assets for the conference campaign.</p>
+      </div>
+      <div class="grid">
+        <article class="asset"><a href="rcop-glasgow-promo/assets/sc26/royal-college-glasgow-logo.png"><img src="rcop-glasgow-promo/assets/sc26/royal-college-glasgow-logo.png" alt="Royal College Glasgow logo"></a><div class="asset-body"><h3><a href="rcop-glasgow-promo/assets/sc26/royal-college-glasgow-logo.png">royal-college-glasgow-logo.png</a></h3><p>Conference logo.</p></div></article>
+        <article class="asset"><a href="rcop-glasgow-promo/assets/sc26/george-moncrieff.png"><img src="rcop-glasgow-promo/assets/sc26/george-moncrieff.png" alt="George Moncrieff"></a><div class="asset-body"><h3><a href="rcop-glasgow-promo/assets/sc26/george-moncrieff.png">george-moncrieff.png</a></h3><p>Speaker image.</p></div></article>
+        <article class="asset"><a href="rcop-glasgow-promo/assets/sc26/charlotte-holley.png"><img src="rcop-glasgow-promo/assets/sc26/charlotte-holley.png" alt="Charlotte Holley"></a><div class="asset-body"><h3><a href="rcop-glasgow-promo/assets/sc26/charlotte-holley.png">charlotte-holley.png</a></h3><p>Speaker image.</p></div></article>
+        <article class="asset"><a href="rcop-glasgow-promo/assets/sc26/maria-dow.png"><img src="rcop-glasgow-promo/assets/sc26/maria-dow.png" alt="Maria Dow"></a><div class="asset-body"><h3><a href="rcop-glasgow-promo/assets/sc26/maria-dow.png">maria-dow.png</a></h3><p>Speaker image.</p></div></article>
+        <article class="asset"><a href="rcop-glasgow-promo/assets/sc26/graham-pirie.png"><img src="rcop-glasgow-promo/assets/sc26/graham-pirie.png" alt="Graham Pirie"></a><div class="asset-body"><h3><a href="rcop-glasgow-promo/assets/sc26/graham-pirie.png">graham-pirie.png</a></h3><p>Speaker image.</p></div></article>
+        <article class="asset"><a href="rcop-glasgow-promo/assets/sc26/jane-pritchard.png"><img src="rcop-glasgow-promo/assets/sc26/jane-pritchard.png" alt="Jane Pritchard"></a><div class="asset-body"><h3><a href="rcop-glasgow-promo/assets/sc26/jane-pritchard.png">jane-pritchard.png</a></h3><p>Speaker image.</p></div></article>
+        <article class="asset"><a href="rcop-glasgow-promo/assets/sc26/emma-noe.png"><img src="rcop-glasgow-promo/assets/sc26/emma-noe.png" alt="Emma Noe"></a><div class="asset-body"><h3><a href="rcop-glasgow-promo/assets/sc26/emma-noe.png">emma-noe.png</a></h3><p>Speaker image.</p></div></article>
+        <article class="asset"><a href="rcop-glasgow-promo/assets/sc26/am-agenda.png"><img src="rcop-glasgow-promo/assets/sc26/am-agenda.png" alt="AM agenda"></a><div class="asset-body"><h3><a href="rcop-glasgow-promo/assets/sc26/am-agenda.png">am-agenda.png</a></h3><p>Agenda graphic.</p></div></article>
+        <article class="asset"><a href="rcop-glasgow-promo/assets/sc26/pm-agenda.png"><img src="rcop-glasgow-promo/assets/sc26/pm-agenda.png" alt="PM agenda"></a><div class="asset-body"><h3><a href="rcop-glasgow-promo/assets/sc26/pm-agenda.png">pm-agenda.png</a></h3><p>Agenda graphic.</p></div></article>
+        <article class="asset"><a href="rcop-glasgow-promo/assets/stock/conference-networking.jpg"><img src="rcop-glasgow-promo/assets/stock/conference-networking.jpg" alt="Conference networking"></a><div class="asset-body"><h3><a href="rcop-glasgow-promo/assets/stock/conference-networking.jpg">conference-networking.jpg</a></h3><p>Stock image.</p></div></article>
+        <article class="asset"><a href="rcop-glasgow-promo/assets/audio/sc26-upbeat-promo.wav"><div class="asset-body"><h3><a href="rcop-glasgow-promo/assets/audio/sc26-upbeat-promo.wav">sc26-upbeat-promo.wav</a></h3><p>Audio file.</p></div></a></article>
+      </div>
+    </section>
+
+    <section id="homepage" data-folder="ghl-homepage-assets">
+      <div class="section-head">
+        <h2>Branch Homepage</h2>
+        <p>Images used in the Glasgow Branch homepage rebuild.</p>
+      </div>
+      <div class="grid">
+        <article class="asset"><a href="ghl-homepage-assets/hero-conference-room.jpg"><img src="ghl-homepage-assets/hero-conference-room.jpg" alt="Conference room"></a><div class="asset-body"><h3><a href="ghl-homepage-assets/hero-conference-room.jpg">hero-conference-room.jpg</a></h3><p>Homepage image.</p></div></article>
+        <article class="asset"><a href="ghl-homepage-assets/hero-clinic-demo.jpg"><img src="ghl-homepage-assets/hero-clinic-demo.jpg" alt="Clinic demo"></a><div class="asset-body"><h3><a href="ghl-homepage-assets/hero-clinic-demo.jpg">hero-clinic-demo.jpg</a></h3><p>Homepage image.</p></div></article>
+        <article class="asset"><a href="ghl-homepage-assets/hero-training-room.jpg"><img src="ghl-homepage-assets/hero-training-room.jpg" alt="Training room"></a><div class="asset-body"><h3><a href="ghl-homepage-assets/hero-training-room.jpg">hero-training-room.jpg</a></h3><p>Homepage image.</p></div></article>
+        <article class="asset"><a href="ghl-homepage-assets/hero-podiatrist-shirt.jpg"><img src="ghl-homepage-assets/hero-podiatrist-shirt.jpg" alt="Podiatrist shirt"></a><div class="asset-body"><h3><a href="ghl-homepage-assets/hero-podiatrist-shirt.jpg">hero-podiatrist-shirt.jpg</a></h3><p>Homepage image.</p></div></article>
+        <article class="asset"><a href="ghl-homepage-assets/hero-tent-clinic.jpg"><img src="ghl-homepage-assets/hero-tent-clinic.jpg" alt="Tent clinic"></a><div class="asset-body"><h3><a href="ghl-homepage-assets/hero-tent-clinic.jpg">hero-tent-clinic.jpg</a></h3><p>Homepage image.</p></div></article>
+        <article class="asset"><a href="ghl-homepage-assets/hero-ultrasound.jpg"><img src="ghl-homepage-assets/hero-ultrasound.jpg" alt="Ultrasound"></a><div class="asset-body"><h3><a href="ghl-homepage-assets/hero-ultrasound.jpg">hero-ultrasound.jpg</a></h3><p>Homepage image.</p></div></article>
+      </div>
+    </section>
+  </main>
+  <script>
+    function safeName(name) {
+      return name.toLowerCase().replace(/[^a-z0-9._-]+/g, "-").replace(/-+/g, "-").replace(/^-|-$/g, "");
+    }
+
+    function addDownloadButtons() {
+      document.querySelectorAll(".asset").forEach((asset) => {
+        const firstLink = asset.querySelector("a[href]");
+        const body = asset.querySelector(".asset-body");
+        if (!firstLink || !body) return;
+
+        const href = firstLink.getAttribute("href");
+        const filename = href.split("/").pop();
+        const actions = document.createElement("div");
+        actions.className = "asset-actions";
+
+        const download = document.createElement("a");
+        download.className = "button";
+        download.href = href;
+        download.download = filename;
+        download.textContent = "Download";
+
+        const open = document.createElement("a");
+        open.className = "button";
+        open.href = href;
+        open.textContent = "Open";
+
+        actions.append(download, open);
+        body.appendChild(actions);
+      });
+    }
+
+    function createUploadPanels() {
+      document.querySelectorAll("section[data-folder]").forEach((section) => {
+        const folderName = section.dataset.folder;
+        const selectedFiles = [];
+
+        const panel = document.createElement("div");
+        panel.className = "upload-panel";
+        panel.innerHTML = `
+          <h3>Add assets to this area</h3>
+          <p>Drop files here, then save them into <strong>${folderName}</strong> when prompted.</p>
+          <input type="file" multiple hidden>
+          <div class="upload-actions">
+            <button class="button primary" type="button" data-action="choose">Choose files</button>
+            <button class="button" type="button" data-action="save">Save to asset folder</button>
+            <button class="button" type="button" data-action="clear">Clear</button>
+          </div>
+          <ul class="upload-list"></ul>
+          <p class="upload-status"></p>
+        `;
+
+        const head = section.querySelector(".section-head");
+        head.insertAdjacentElement("afterend", panel);
+
+        const input = panel.querySelector("input");
+        const list = panel.querySelector(".upload-list");
+        const status = panel.querySelector(".upload-status");
+
+        function render() {
+          list.innerHTML = "";
+          selectedFiles.forEach((file) => {
+            const li = document.createElement("li");
+            li.textContent = `${file.name} (${Math.round(file.size / 1024)} KB)`;
+            list.appendChild(li);
+          });
+          status.textContent = selectedFiles.length ? `${selectedFiles.length} file(s) ready to save.` : "";
+        }
+
+        function addFiles(files) {
+          Array.from(files).forEach((file) => selectedFiles.push(file));
+          render();
+        }
+
+        panel.querySelector('[data-action="choose"]').addEventListener("click", () => input.click());
+        panel.querySelector('[data-action="clear"]').addEventListener("click", () => {
+          selectedFiles.length = 0;
+          input.value = "";
+          render();
+        });
+        input.addEventListener("change", (event) => addFiles(event.target.files));
+
+        ["dragenter", "dragover"].forEach((eventName) => {
+          panel.addEventListener(eventName, (event) => {
+            event.preventDefault();
+            panel.classList.add("dragging");
+          });
+        });
+
+        ["dragleave", "drop"].forEach((eventName) => {
+          panel.addEventListener(eventName, (event) => {
+            event.preventDefault();
+            panel.classList.remove("dragging");
+          });
+        });
+
+        panel.addEventListener("drop", (event) => addFiles(event.dataTransfer.files));
+
+        panel.querySelector('[data-action="save"]').addEventListener("click", async () => {
+          if (!selectedFiles.length) {
+            status.textContent = "Choose or drop files first.";
+            return;
+          }
+
+          if (!("showDirectoryPicker" in window)) {
+            status.textContent = "This browser cannot save directly to a folder. Use the matching intake page or download/upload manually.";
+            return;
+          }
+
+          try {
+            status.textContent = `Choose the ${folderName} folder.`;
+            const directory = await window.showDirectoryPicker();
+
+            for (const file of selectedFiles) {
+              const handle = await directory.getFileHandle(safeName(file.name), { create: true });
+              const writable = await handle.createWritable();
+              await writable.write(file);
+              await writable.close();
+            }
+
+            const manifest = {
+              savedAt: new Date().toISOString(),
+              intendedFolder: folderName,
+              files: selectedFiles.map((file) => ({
+                originalName: file.name,
+                savedName: safeName(file.name),
+                type: file.type || "unknown",
+                size: file.size
+              }))
+            };
+
+            const manifestHandle = await directory.getFileHandle(`asset-upload-${Date.now()}.json`, { create: true });
+            const manifestWritable = await manifestHandle.createWritable();
+            await manifestWritable.write(JSON.stringify(manifest, null, 2));
+            await manifestWritable.close();
+
+            status.textContent = "Saved. Refresh this page after saving if you need the new files to appear in the index.";
+          } catch (error) {
+            status.textContent = `Save cancelled or failed: ${error.message}`;
+          }
+        });
+      });
+    }
+
+    addDownloadButtons();
+    createUploadPanels();
+  </script>
+</body>
+</html>

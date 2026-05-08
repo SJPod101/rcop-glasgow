@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Scottish Conference 2026 Promo</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { box-sizing: border-box; }
+      html, body {
+        width: 1920px;
+        height: 1080px;
+        margin: 0;
+        overflow: hidden;
+        background: #017d65;
+        color: #fff;
+        font-family: Montserrat, Lato, Arial, sans-serif;
+      }
+      #main {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #017d65;
+      }
+      .bg {
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 18% 10%, rgba(48,190,173,.45), transparent 30%),
+          radial-gradient(circle at 88% 86%, rgba(255,126,132,.38), transparent 32%),
+          linear-gradient(135deg, #017d65 0%, #00634f 58%, #000321 100%);
+      }
+      .lines {
+        position: absolute;
+        inset: -80px;
+        opacity: .22;
+        background-image: repeating-linear-gradient(0deg, transparent 0 54px, rgba(255,255,255,.85) 56px 58px);
+      }
+      .flag {
+        position: absolute;
+        right: -80px;
+        top: 120px;
+        width: 620px;
+        height: 410px;
+        opacity: .28;
+        border: 10px solid rgba(255,255,255,.9);
+        border-left: 0;
+        transform: skewY(-8deg);
+      }
+      .flag::before, .flag::after {
+        content: "";
+        position: absolute;
+        inset: 70px -20px auto 70px;
+        height: 10px;
+        background: #fff;
+        transform: rotate(24deg);
+      }
+      .flag::after {
+        transform: rotate(-24deg);
+        top: 220px;
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        padding: 72px 92px;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+      }
+      .scene-one {
+        opacity: 1;
+        visibility: visible;
+      }
+      .logo {
+        position: absolute;
+        top: 48px;
+        left: 70px;
+        width: 270px;
+        height: 150px;
+        object-fit: contain;
+        background: rgba(255,255,255,.94);
+        padding: 14px 18px;
+        border-radius: 20px;
+      }
+      .eyebrow {
+        color: #fff;
+        font-weight: 900;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        font-size: 24px;
+        text-shadow: 0 3px 18px rgba(0,3,33,.38);
+      }
+      h1, h2, p { margin: 0; }
+      h1 {
+        max-width: 1040px;
+        font-size: 112px;
+        line-height: .92;
+        font-weight: 900;
+        letter-spacing: 0;
+      }
+      h2 {
+        font-size: 78px;
+        line-height: .96;
+        font-weight: 900;
+        letter-spacing: 0;
+      }
+      .hero {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 1050px;
+        height: 100%;
+        gap: 26px;
+        padding-top: 80px;
+      }
+      .lead {
+        max-width: 840px;
+        font-size: 35px;
+        line-height: 1.18;
+        font-weight: 700;
+        color: rgba(255,255,255,.9);
+      }
+      .pill-row { display: flex; gap: 16px; flex-wrap: wrap; }
+      .pill {
+        display: inline-flex;
+        min-height: 58px;
+        align-items: center;
+        padding: 0 24px;
+        border-radius: 999px;
+        background: #000321 !important;
+        color: #fff !important;
+        font-weight: 900;
+        font-size: 23px;
+        box-shadow: 0 20px 60px rgba(0,0,0,.22);
+      }
+      .pill.red { background: #000321 !important; }
+      .pill.teal { background: #000321 !important; }
+      .feature-card {
+        position: absolute;
+        z-index: 3;
+        right: 90px;
+        bottom: 92px;
+        width: 570px;
+        min-height: 430px;
+        border-radius: 34px;
+        padding: 40px;
+        background: #fff;
+        color: #000321;
+        box-shadow: 0 42px 120px rgba(0,0,0,.38);
+      }
+      .big-date {
+        color: #017d65;
+        font-size: 92px;
+        line-height: .9;
+        font-weight: 950;
+      }
+      .card-text {
+        margin-top: 24px;
+        font-size: 30px;
+        line-height: 1.22;
+        font-weight: 850;
+      }
+      .scene-two, .scene-three, .scene-four, .scene-five {
+        display: grid;
+        grid-template-columns: .92fr 1.08fr;
+        gap: 48px;
+        align-items: center;
+      }
+      .copy {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+      .copy p {
+        max-width: 760px;
+        font-size: 31px;
+        line-height: 1.25;
+        font-weight: 700;
+        color: rgba(255,255,255,.88);
+      }
+      .benefits {
+        display: grid;
+        gap: 18px;
+      }
+      .benefit {
+        padding: 24px 28px;
+        border-radius: 24px;
+        background: rgba(255,255,255,.94);
+        color: #000321;
+        font-size: 31px;
+        font-weight: 900;
+        box-shadow: 0 24px 80px rgba(0,0,0,.2);
+      }
+      .benefit span {
+        display: block;
+        margin-top: 6px;
+        color: #30344a;
+        font-size: 22px;
+        font-weight: 750;
+      }
+      .agenda {
+        display: grid;
+        gap: 14px;
+        position: relative;
+        z-index: 2;
+      }
+      .agenda-row {
+        display: grid;
+        grid-template-columns: 132px 1fr;
+        gap: 22px;
+        align-items: center;
+        padding: 18px 22px;
+        border-radius: 22px;
+        background: #fff;
+        color: #000321;
+        box-shadow: 0 18px 70px rgba(0,0,0,.22);
+      }
+      .time {
+        color: #017d65;
+        font-size: 29px;
+        font-weight: 950;
+      }
+      .topic {
+        font-size: 27px;
+        line-height: 1.14;
+        font-weight: 900;
+      }
+      .topic span {
+        display: block;
+        margin-top: 5px;
+        color: #30344a;
+        font-size: 20px;
+        font-weight: 750;
+      }
+      .speaker-grid {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+      .speaker-card {
+        height: 286px;
+        border-radius: 26px;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: 0 22px 70px rgba(0,0,0,.24);
+      }
+      .speaker-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .booking {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: 1220px;
+        padding: 48px;
+        border-radius: 40px;
+        background: #fff;
+        color: #000321;
+        text-align: center;
+        box-shadow: 0 42px 120px rgba(0,0,0,.38);
+      }
+      .booking h2 { color: #000321; font-size: 86px; }
+      .url {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 560px;
+        min-height: 76px;
+        margin-top: 28px;
+        border-radius: 999px;
+        background: #000321;
+        color: #fff;
+        font-size: 34px;
+        font-weight: 950;
+      }
+      .prices {
+        display: flex;
+        justify-content: center;
+        gap: 18px;
+        margin-top: 26px;
+      }
+      .price {
+        min-width: 260px;
+        padding: 20px 24px;
+        border-radius: 22px;
+        background: #f6f6ff;
+        border: 1px solid rgba(0,3,33,.16);
+        font-size: 27px;
+        font-weight: 950;
+      }
+      .price span {
+        display: block;
+        margin-top: 5px;
+        color: #30344a;
+        font-size: 18px;
+      }
+      .caption {
+        position: absolute;
+        z-index: 8;
+        left: 210px;
+        right: 210px;
+        bottom: 44px;
+        display: flex;
+        justify-content: center;
+      }
+      .caption span {
+        padding: 16px 32px;
+        border-radius: 999px;
+        background: rgba(0,3,33,.82);
+        color: #fff;
+        font-size: 31px;
+        font-weight: 850;
+        text-align: center;
+        box-shadow: 0 20px 70px rgba(0,0,0,.28);
+      }
+      .stripe {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 42px;
+        background: linear-gradient(#c8193c 0 33%, #fff 33% 66%, #07356e 66%);
+        z-index: 4;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main" data-composition-id="main" data-start="0" data-duration="30" data-width="1920" data-height="1080">
+      <audio id="underscore" data-start="0" data-duration="30" data-track-index="0" data-volume="0.2" src="assets/audio/sc26-upbeat-promo.wav"></audio>
+      <div class="bg"></div>
+      <div class="lines"></div>
+      <div class="flag"></div>
+
+      <section id="scene-one" class="scene scene-one clip" data-start="0" data-duration="6" data-track-index="1">
+        <img class="logo" src="assets/sc26/royal-college-glasgow-logo.png" alt="" />
+        <div class="hero">
+          <div class="eyebrow">Royal College of Podiatry | Scottish Branches Network</div>
+          <h1>Scottish Conference 2026</h1>
+          <p class="lead">A full day designed to engage, inspire and elevate your podiatric practice.</p>
+          <div class="pill-row">
+            <div class="pill red">Saturday 23 May 2026</div>
+            <div class="pill teal">Stirling Court Hotel</div>
+            <div class="pill">09:00-17:00</div>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="big-date">23 May</div>
+          <div class="card-text">Registration from 08:00<br />Stirling University<br />Stirling FK9 4LB</div>
+        </div>
+      </section>
+
+      <section id="scene-two" class="scene scene-two clip" data-start="6" data-duration="6" data-track-index="1">
+        <div class="copy">
+          <div class="eyebrow">Why attend?</div>
+          <h2>Get your CPD in one focused day.</h2>
+          <p>Clinical updates, interactive sessions, trade workshops, student presentations, Q&A panels and time to connect with colleagues.</p>
+        </div>
+        <div class="benefits">
+          <div class="benefit">Wide-ranging podiatry topics<span>Dermatology, weight management, dermoscopy and children’s podiatry.</span></div>
+          <div class="benefit">Networking opportunities<span>Connect with peers and leaders across the profession.</span></div>
+          <div class="benefit">Lunch and refreshments included<span>Full day conference value in one practical package.</span></div>
+        </div>
+      </section>
+
+      <section id="scene-three" class="scene scene-three clip" data-start="12" data-duration="7" data-track-index="1">
+        <div class="copy">
+          <div class="eyebrow">Programme</div>
+          <h2>A day packed with useful clinical content.</h2>
+          <p>Morning plenaries, concurrent afternoon workshops, College focus, Scottish update and Question Time.</p>
+        </div>
+        <div class="agenda">
+          <div class="agenda-row"><div class="time">08:00</div><div class="topic">Registration, tea, coffee and trade show</div></div>
+          <div class="agenda-row"><div class="time">09:00</div><div class="topic">Dermatology below the Wallace Line<span>Dr George Moncrieff</span></div></div>
+          <div class="agenda-row"><div class="time">11:00</div><div class="topic">Weight Loss Jabs: A Paradigm Shift?<span>The Changing Landscape of Weight Management - Maria Dow</span></div></div>
+          <div class="agenda-row"><div class="time">13:30</div><div class="topic">Concurrent workshops<span>Dermoscopy or Children’s Podiatry</span></div></div>
+          <div class="agenda-row"><div class="time">15:30</div><div class="topic">College Focus, Scottish Update and Question Time</div></div>
+        </div>
+      </section>
+
+      <section id="scene-four" class="scene scene-four clip" data-start="19" data-duration="6" data-track-index="1">
+        <div class="copy">
+          <div class="eyebrow">Speaker lineup</div>
+          <h2>Clinical, professional and leadership voices.</h2>
+          <p>Hear from speakers across dermatology, weight management, children’s podiatry, Scottish updates and professional discussion.</p>
+        </div>
+        <div class="speaker-grid">
+          <div class="speaker-card"><img src="assets/sc26/george-moncrieff.png" alt="" /></div>
+          <div class="speaker-card"><img src="assets/sc26/maria-dow.png" alt="" /></div>
+          <div class="speaker-card"><img src="assets/sc26/charlotte-holley.png" alt="" /></div>
+          <div class="speaker-card"><img src="assets/sc26/graham-pirie.png" alt="" /></div>
+          <div class="speaker-card"><img src="assets/sc26/emma-noe.png" alt="" /></div>
+          <div class="speaker-card"><img src="assets/sc26/jane-pritchard.png" alt="" /></div>
+        </div>
+      </section>
+
+      <section id="scene-five" class="scene scene-five clip" data-start="25" data-duration="5" data-track-index="1">
+        <div class="booking">
+          <div class="eyebrow">Book now</div>
+          <h2>Will we see you in Stirling?</h2>
+          <div class="url">glasgowrcop.org/SC26</div>
+          <div class="prices">
+            <div class="price">Members £160<span>Full price</span></div>
+            <div class="price">Non-members £200<span>Full price</span></div>
+            <div class="price">Students £70<span>Full price</span></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="caption"><span id="caption-text">Scottish Conference 2026. Saturday 23 May at Stirling Court Hotel.</span></div>
+      <div class="stripe"></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const caption = document.querySelector("#caption-text");
+
+      tl.fromTo(".lines", { y: 0 }, { y: -116, duration: 30, ease: "none" }, 0);
+      tl.fromTo(".flag", { x: 80, opacity: 0 }, { x: 0, opacity: 1, duration: 1.1, ease: "power3.out" }, 0.4);
+
+      tl.fromTo(".logo", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.2);
+      tl.fromTo("#scene-one .eyebrow", { opacity: 0, y: 32 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.35);
+      tl.fromTo("#scene-one h1", { opacity: 0, y: 64 }, { opacity: 1, y: 0, duration: 0.78, ease: "power3.out" }, 0.55);
+      tl.fromTo("#scene-one .lead", { opacity: 0, y: 38 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 1.05);
+      tl.fromTo("#scene-one .pill", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.42, stagger: 0.1, ease: "power2.out" }, 1.35);
+      tl.fromTo(".feature-card", { opacity: 0, y: 80, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.75, ease: "back.out(1.2)" }, 1.2);
+      tl.to("#scene-one .hero, #scene-one .feature-card", { x: -170, opacity: 0, filter: "blur(16px)", duration: 0.5, ease: "power3.in" }, 5.5);
+      tl.set("#scene-one .hero, #scene-one .feature-card", { opacity: 0, visibility: "hidden" }, 6);
+
+      tl.set(caption, { innerText: "Clinical updates, workshops, networking, trade show, lunch and refreshments." }, 6);
+      tl.set("#scene-two", { opacity: 1, x: 0, y: 0, filter: "blur(0px)" }, 6);
+      tl.fromTo("#scene-two .copy", { opacity: 0, x: -80 }, { opacity: 1, x: 0, duration: 0.65, ease: "power3.out" }, 6.1);
+      tl.fromTo(".benefit", { opacity: 0, x: 90 }, { opacity: 1, x: 0, duration: 0.5, stagger: 0.14, ease: "power3.out" }, 6.55);
+      tl.to(".benefit", { y: -7, duration: 0.7, stagger: 0.1, yoyo: true, repeat: 2, ease: "sine.inOut" }, 8.6);
+      tl.to("#scene-two .copy, #scene-two .benefits", { y: -130, opacity: 0, filter: "blur(16px)", duration: 0.5, ease: "power3.in" }, 11.5);
+      tl.set("#scene-two .copy, #scene-two .benefits", { opacity: 0, visibility: "hidden" }, 12);
+
+      tl.set(caption, { innerText: "Dermatology, weight management, dermoscopy, children's podiatry and Question Time." }, 12);
+      tl.set("#scene-three", { opacity: 1, x: 0, y: 0, filter: "blur(0px)" }, 12);
+      tl.fromTo("#scene-three .copy", { opacity: 0, x: -80 }, { opacity: 1, x: 0, duration: 0.62, ease: "power3.out" }, 12.15);
+      tl.fromTo(".agenda-row", { opacity: 0, y: 38 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.12, ease: "power2.out" }, 12.65);
+      tl.to(".agenda-row", { x: 8, duration: 0.45, stagger: 0.08, yoyo: true, repeat: 1, ease: "sine.inOut" }, 15.5);
+      tl.to("#scene-three .copy, #scene-three .agenda", { scale: 1.05, opacity: 0, filter: "blur(20px)", duration: 0.5, ease: "power3.in" }, 18.5);
+      tl.set("#scene-three .copy, #scene-three .agenda", { opacity: 0, visibility: "hidden" }, 19);
+
+      tl.set(caption, { innerText: "Meet the speaker lineup for Scottish Conference 2026." }, 19);
+      tl.set("#scene-four", { opacity: 1, x: 0, y: 0, filter: "blur(0px)" }, 19);
+      tl.fromTo("#scene-four .copy", { opacity: 0, x: -80 }, { opacity: 1, x: 0, duration: 0.62, ease: "power3.out" }, 19.1);
+      tl.fromTo(".speaker-card", { opacity: 0, y: 44, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.46, stagger: 0.08, ease: "back.out(1.15)" }, 19.65);
+      tl.to(".speaker-card", { y: -6, duration: 0.7, stagger: 0.05, yoyo: true, repeat: 2, ease: "sine.inOut" }, 21.6);
+      tl.to("#scene-four .copy, #scene-four .speaker-grid", { x: -170, opacity: 0, filter: "blur(16px)", duration: 0.5, ease: "power3.in" }, 24.5);
+      tl.set("#scene-four .copy, #scene-four .speaker-grid", { opacity: 0, visibility: "hidden" }, 25);
+
+      tl.set(caption, { innerText: "Book your place now at glasgowrcop.org/SC26." }, 25);
+      tl.set("#scene-five", { opacity: 1, x: 0, y: 0, filter: "blur(0px)" }, 25);
+      tl.fromTo(".booking", { opacity: 0, y: 80, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.72, ease: "back.out(1.18)" }, 25.2);
+      tl.fromTo(".prices .price", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.35, stagger: 0.09, ease: "power2.out" }, 26.35);
+      tl.to(".url", { boxShadow: "0 0 46px rgba(48,190,173,0.55)", duration: 0.75, yoyo: true, repeat: 3, ease: "sine.inOut" }, 26.8);
+
+      tl.fromTo(".caption span", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.36, ease: "power2.out" }, 0.35);
+      tl.to(".caption span", { opacity: 0, y: -18, duration: 0.2, ease: "power2.in" }, 5.55);
+      tl.fromTo(".caption span", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, 6.15);
+      tl.to(".caption span", { opacity: 0, y: -18, duration: 0.2, ease: "power2.in" }, 11.55);
+      tl.fromTo(".caption span", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, 12.15);
+      tl.to(".caption span", { opacity: 0, y: -18, duration: 0.2, ease: "power2.in" }, 18.55);
+      tl.fromTo(".caption span", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, 19.15);
+      tl.to(".caption span", { opacity: 0, y: -18, duration: 0.2, ease: "power2.in" }, 24.55);
+      tl.fromTo(".caption span", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, 25.15);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

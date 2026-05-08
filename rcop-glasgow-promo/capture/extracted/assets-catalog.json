@@ -1,0 +1,182 @@
+[
+  {
+    "url": "https://assets.cdn.filesafe.space/tEnB905htFPXJjMwf3QD/media/6824639a8e57c58f6650bb74.png",
+    "type": "Image",
+    "contexts": [
+      "img[src]"
+    ],
+    "notes": "1",
+    "description": "1",
+    "aboveFold": true
+  },
+  {
+    "url": "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/tEnB905htFPXJjMwf3QD/media/693eae6297c0232721f6ee15.png",
+    "type": "Image",
+    "contexts": [
+      "img[src]"
+    ],
+    "notes": null,
+    "aboveFold": true
+  },
+  {
+    "url": "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/n4lLPqZ3Dv19TQTebcB6/media/6733d57af8701b3da6e64f8a.png",
+    "type": "Background",
+    "contexts": [
+      "css url()"
+    ],
+    "notes": null,
+    "aboveFold": true
+  },
+  {
+    "url": "https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/tEnB905htFPXJjMwf3QD/media/693eae6297c0232721f6ee15.png",
+    "type": "Image",
+    "contexts": [
+      "source[srcset]"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://images.leadconnectorhq.com/image/f_webp/q_80/r_768/u_https://assets.cdn.filesafe.space/tEnB905htFPXJjMwf3QD/media/693eae6297c0232721f6ee15.png",
+    "type": "Image",
+    "contexts": [
+      "source[srcset]"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://images.leadconnectorhq.com/image/f_webp/q_80/r_640/u_https://assets.cdn.filesafe.space/tEnB905htFPXJjMwf3QD/media/693eae6297c0232721f6ee15.png",
+    "type": "Image",
+    "contexts": [
+      "source[srcset]"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://images.leadconnectorhq.com/image/f_webp/q_80/r_320/u_https://assets.cdn.filesafe.space/tEnB905htFPXJjMwf3QD/media/693eae6297c0232721f6ee15.png",
+    "type": "Image",
+    "contexts": [
+      "source[srcset]"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://fonts.googleapis.com/css?family=Lato:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i%7COpen%20Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i%7CMontserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i%7CRoboto:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i%7CDM%20Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i%7CPT%20Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i%7CRoboto:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap",
+    "type": "Other",
+    "contexts": [
+      "link[rel=\"preload\"]"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://stcdn.leadconnectorhq.com/funnel/icon/favicon.ico",
+    "type": "Icon",
+    "contexts": [
+      "link[rel=\"icon\"]"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://images.leadconnectorhq.com/image/f_webp/q_80/r_768/u_https://assets.cdn.filesafe.space/n4lLPqZ3Dv19TQTebcB6/media/6733d57af8701b3da6e64f8a.png",
+    "type": "Background",
+    "contexts": [
+      "css url()"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/n4lLPqZ3Dv19TQTebcB6/media/6733d57af8701b3da6e64f8a.png",
+    "type": "Background",
+    "contexts": [
+      "css url()"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://stcdn.leadconnectorhq.com/intl-tel-input/17.0.12/img/flags.png",
+    "type": "Background",
+    "contexts": [
+      "css url()"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://stcdn.leadconnectorhq.com/intl-tel-input/17.0.12/img/flags@2x.png",
+    "type": "Background",
+    "contexts": [
+      "css url()"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://stcdn.leadconnectorhq.com/funnel/fontawesome/webfonts/fa-regular-400.woff2",
+    "type": "Font",
+    "contexts": [
+      "css url()"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://stcdn.leadconnectorhq.com/funnel/fontawesome/webfonts/fa-regular-400.woff",
+    "type": "Font",
+    "contexts": [
+      "css url()"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://stcdn.leadconnectorhq.com/funnel/fontawesome/webfonts/fa-regular-400.ttf",
+    "type": "Font",
+    "contexts": [
+      "css url()"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://stcdn.leadconnectorhq.com/funnel/fontawesome/webfonts/fa-solid-900.woff2",
+    "type": "Font",
+    "contexts": [
+      "css url()"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://stcdn.leadconnectorhq.com/funnel/fontawesome/webfonts/fa-solid-900.woff",
+    "type": "Font",
+    "contexts": [
+      "css url()"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://stcdn.leadconnectorhq.com/funnel/fontawesome/webfonts/fa-solid-900.ttf",
+    "type": "Font",
+    "contexts": [
+      "css url()"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://stcdn.leadconnectorhq.com/funnel/fontawesome/webfonts/fa-brands-400.woff2",
+    "type": "Font",
+    "contexts": [
+      "css url()"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://stcdn.leadconnectorhq.com/funnel/fontawesome/webfonts/fa-brands-400.woff",
+    "type": "Font",
+    "contexts": [
+      "css url()"
+    ],
+    "notes": null
+  },
+  {
+    "url": "https://stcdn.leadconnectorhq.com/funnel/fontawesome/webfonts/fa-brands-400.ttf",
+    "type": "Font",
+    "contexts": [
+      "css url()"
+    ],
+    "notes": null
+  }
+]

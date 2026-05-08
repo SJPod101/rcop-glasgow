@@ -1,0 +1,10 @@
+.git/
+.netlify/
+.secrets/
+.env
+.env.*
+private-config.json
+secrets.json
+node_modules/
+**/.DS_Store
+**/intake-*/

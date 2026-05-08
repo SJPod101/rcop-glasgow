@@ -1,0 +1,41 @@
+[a] Home
+[a] Facebook
+[a] Branch Login
+[a] Back to Basics
+[a] Upcoming Courses
+[a] Scottish Conference 2026
+[a] Contact Us
+[h1] Scottish Conference
+[h1] 2026: Stirling
+[p] The Scottish Branches Network is thrilled to announce the return of The Annual Scottish Conference for 2026! Join us for a day designed to engage, inspire, and elevate your podiatric practice.
+[p] 📍 Location: Stirling Court Hotel, Stirling University, Stirling FK9 4LB
+[p] 📅 Date: Saturday, 23rd May 2026
+[p] 🕘 Time: 09:00 – 17:00 (Registration from 08:00)
+[p] Explore a wide ranging topics in podiatry, programme.
+[p] Interactive Sessions: Engage in concurrent workshops, student presentations, and Q&A panels.
+[p] Networking Opportunities: Connect with peers and leaders in the profession.
+[p] 08:00 Registration, Tea, Coffee & Trade Show
+[p] 09:00
+[strong] Plenary 1 - Dermatology below the Wallace Line.
+[p] Opening – David Rarity
+[p] Welcome – Emma Noe
+[p] Dermatology below the Wallace Line – Dr George Moncrieff
+[p] 10:30 Tea, Coffee & Trade Workshops
+[p] 11:00
+[strong] Plenary 2 – Weight Loss Jabs: A Paradigm Shift?
+[p] TBC
+[p] The Changing Landscape of Weight Management – Maria Dow
+[p] 12:00 Lunch & Trade Workshops
+[strong] 13:30 Concurrent A: Dermoscopy - Dr George Moncrieff | Concurrent B: Children’s Podiatry - Dr Charlotte Holley
+[p] 15:00 Tea, Coffee & Trade Workshops
+[strong] 15:30 Plenary 3 – College Focus
+[p] Independent Practice Committee Update – Janet McGrogan
+[p] 500 Miles and More – Scottish Update – Graham Pirie
+[p] Question Time – Emma Noe, Jane Pritchard, Graham Pirie, Janet McGrogan
+[p] Thanks & Close
+[p] Trade workshops to be announced soon.
+[p] Early Bird (before 14/02/2026):
+[p] Members: £140 | Non-Members: £180 | Students: £50
+[p] Full Price:
+[p] Members: £160 | Non-Members: £200 | Students: £70
+[p] Includes Lunch and refreshments.
